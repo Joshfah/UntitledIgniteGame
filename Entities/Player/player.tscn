@@ -1,18 +1,76 @@
-[gd_scene load_steps=4 format=3 uid="uid://ccn3s6q1fwoel"]
+[gd_scene load_steps=12 format=3 uid="uid://ccn3s6q1fwoel"]
 
-[ext_resource type="Script" uid="uid://crof5de03f3pd" path="res://Entities/Player/player.gd" id="1_3uyv8"]
-[ext_resource type="Texture2D" uid="uid://ccp8lypa4w8l6" path="res://icon.svg" id="1_mv1ah"]
+[ext_resource type="Script" uid="uid://cll40ugqaguaw" path="res://Autoloads/player_autoload.gd" id="1_3uyv8"]
+[ext_resource type="Texture2D" uid="uid://cmvmk820jcgpq" path="res://assets/player-placeholder-sheet.png" id="2_lu8i8"]
+[ext_resource type="PackedScene" uid="uid://blbbrytgt780p" path="res://Collision/hurt_box.tscn" id="3_lu8i8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_01a4e"]
+atlas = ExtResource("2_lu8i8")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lu8i8"]
+atlas = ExtResource("2_lu8i8")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tekja"]
+atlas = ExtResource("2_lu8i8")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5c2io"]
+atlas = ExtResource("2_lu8i8")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4wf4l"]
+atlas = ExtResource("2_lu8i8")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_01a4e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_01a4e")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lu8i8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tekja")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5c2io")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4wf4l")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3uyv8"]
-size = Vector2(126, 126)
+size = Vector2(10, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tekja"]
+size = Vector2(14, 17)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_3uyv8")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_mv1ah")
-centered = false
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_01a4e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(64, 64)
+position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_3uyv8")
+
+[node name="HurtBox" parent="." instance=ExtResource("3_lu8i8")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_tekja")

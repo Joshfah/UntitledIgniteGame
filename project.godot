@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 UiAutoload="*res://Autoloads/ui_autoload.gd"
+PlayerAutoload="*res://Autoloads/player_autoload.gd"
 
 [input]
 
