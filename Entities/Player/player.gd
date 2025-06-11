@@ -1,7 +1,8 @@
 extends CharacterBody2D
 
-var stamina : int = 300
-var speed : int = 500
+@export var stamina : int = 300
+@export var stamin_rate := 25
+@export var speed : int = 500
 
 func _ready() -> void:
 	pass
