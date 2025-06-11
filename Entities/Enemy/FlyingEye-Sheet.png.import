@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmvmk820jcgpq"
-path="res://.godot/imported/player-placeholder-sheet.png-c7960f05bdfdd2d59ec137aeb11dd44d.ctex"
+uid="uid://be2l4iwwu1ky3"
+path="res://.godot/imported/FlyingEye-Sheet.png-70334c9449a8be8a3d450bd85e0e9033.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player-placeholder-sheet.png"
-dest_files=["res://.godot/imported/player-placeholder-sheet.png-c7960f05bdfdd2d59ec137aeb11dd44d.ctex"]
+source_file="res://Entities/Enemy/FlyingEye-Sheet.png"
+dest_files=["res://.godot/imported/FlyingEye-Sheet.png-70334c9449a8be8a3d450bd85e0e9033.ctex"]
 
 [params]
 

@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bc5ue46px48pl"]
+
+[ext_resource type="PackedScene" uid="uid://q5ijviybwflu" path="res://Entities/Enemy/Enemy.tscn" id="1_wmigs"]
+[ext_resource type="PackedScene" uid="uid://ccn3s6q1fwoel" path="res://Entities/Player/player.tscn" id="2_86c0p"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_wmigs"]
+vertices = PackedVector2Array(18.0625, 622.031, 21.9297, 18.6016, 337.5, 37.3906, 321.477, 354.109, 1102.06, 625.961, 722.609, 349.891, 1105.93, 10.1875, 702.602, 17.7969)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 0, 3, 5), PackedInt32Array(6, 4, 5, 7)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(12, 8, 8, 632, 1112, 636, 1116, 0, 692, 8, 712, 340, 332, 344, 348, 28)])
+
+[node name="TestRoom" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Enemy" parent="." instance=ExtResource("1_wmigs")]
+position = Vector2(112, 104)
+scale = Vector2(2, 2)
+
+[node name="Player" parent="." instance=ExtResource("2_86c0p")]
+position = Vector2(352, 156)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_wmigs")
