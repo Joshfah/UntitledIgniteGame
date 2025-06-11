@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://ccn3s6q1fwoel"]
 
 [ext_resource type="Script" uid="uid://c5wntec1txq7j" path="res://Entities/Player/player.gd" id="1_lu8i8"]
-[ext_resource type="Texture2D" uid="uid://cmvmk820jcgpq" path="res://assets/player-placeholder-sheet.png" id="2_lu8i8"]
+[ext_resource type="Texture2D" uid="uid://jh3x3issj160" path="res://assets/player-placeholder-sheet.png" id="2_lu8i8"]
 [ext_resource type="PackedScene" uid="uid://blbbrytgt780p" path="res://Collision/hurt_box.tscn" id="3_lu8i8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_01a4e"]
