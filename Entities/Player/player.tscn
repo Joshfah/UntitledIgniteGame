@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://ccn3s6q1fwoel"]
 
-[ext_resource type="Script" uid="uid://cll40ugqaguaw" path="res://Autoloads/player_autoload.gd" id="1_3uyv8"]
+[ext_resource type="Script" uid="uid://c5wntec1txq7j" path="res://Entities/Player/player.gd" id="1_lu8i8"]
 [ext_resource type="Texture2D" uid="uid://cmvmk820jcgpq" path="res://assets/player-placeholder-sheet.png" id="2_lu8i8"]
 [ext_resource type="PackedScene" uid="uid://blbbrytgt780p" path="res://Collision/hurt_box.tscn" id="3_lu8i8"]
 
@@ -59,7 +59,7 @@ size = Vector2(10, 6)
 size = Vector2(14, 17)
 
 [node name="Player" type="CharacterBody2D"]
-script = ExtResource("1_3uyv8")
+script = ExtResource("1_lu8i8")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -74,3 +74,9 @@ shape = SubResource("RectangleShape2D_3uyv8")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_tekja")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 30.0

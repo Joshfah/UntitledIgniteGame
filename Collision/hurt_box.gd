@@ -8,6 +8,11 @@ signal get_hurt
 
 var health : int: set = set_health
 
+func _process(delta: float) -> void:
+	
+	print(PlayerAutoload.player.stamina)
+	
+
 func set_health(new_health) -> void:
 	health = clamp(new_health, 0, max_health)
 	if health == 0:
