@@ -51,3 +51,7 @@ SPRINT={
 2d_physics/layer_1="Player"
 2d_physics/layer_2="Enemies"
 2d_physics/layer_3="Obstacles"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
