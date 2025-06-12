@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c5wntec1txq7j" path="res://Entities/Player/player.gd" id="1_lu8i8"]
 [ext_resource type="Texture2D" uid="uid://cqujr5utquhh1" path="res://assets/player-spritesheet-2.png" id="2_lu8i8"]
-[ext_resource type="Script" path="res://Entities/Player/animations.gd" id="2_tekja"]
+[ext_resource type="Script" uid="uid://b63i0sjru02k7" path="res://Entities/Player/animations.gd" id="2_tekja"]
 [ext_resource type="PackedScene" uid="uid://blbbrytgt780p" path="res://Collision/hurt_box.tscn" id="3_lu8i8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tekja"]
