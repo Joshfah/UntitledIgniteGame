@@ -40,7 +40,7 @@ func _process(delta: float) -> void:
 	set_fuel_left(fuel_left - TimeCycleAutoload.current_coldness * delta)
 	# wenn Player in der Nähe ist, dann wärmen
 	if is_player_nearby:
-		PlayerAutoload.player.current_frost += heat_power * delta
+		PlayerAutoload.player.current_frost -= heat_power * delta
 
 # TEST
 func _input(event: InputEvent) -> void:
