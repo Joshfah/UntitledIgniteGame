@@ -59,7 +59,5 @@ func _on_reachable_area_body_exited(body: Node2D) -> void:
 	print("is not chasing")
 
 func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
-	#print(round(global_position.distance_to(safe_velocity)))
 	velocity += safe_velocity.limit_length(speed / 2) * acceleration
-	print(safe_velocity)
 	move_and_slide()

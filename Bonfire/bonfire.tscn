@@ -11,7 +11,6 @@ radius = 4.0
 radius = 24.0
 
 [node name="Bonfire" type="StaticBody2D"]
-position = Vector2(48, 48)
 script = ExtResource("1_s8pws")
 recharge_rate = 100.0
 
@@ -27,10 +26,9 @@ texture = ExtResource("3_buw6a")
 region_enabled = true
 region_rect = Rect2(0, 0, 10.2143, 15)
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(3, 3)
-
 [node name="HeatArea" type="Area2D" parent="."]
+collision_layer = 0
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HeatArea"]
 shape = SubResource("CircleShape2D_buw6a")
