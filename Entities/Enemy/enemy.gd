@@ -32,7 +32,7 @@ func _physics_process(_delta: float) -> void:
 	match state:
 		State.IDLE:
 			velocity = Vector2.ZERO
-			if _ray_cast.get_collider():
+			if _ray_cast.get_collider() is Player:
 				state = State.CHASE
 				print("is chasing")
 		State.CHASE:
