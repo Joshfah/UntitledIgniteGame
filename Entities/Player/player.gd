@@ -7,6 +7,7 @@ extends CharacterBody2D
 @export var frost_capacity := 200.0
 
 var can_sprint : bool = true
+var current_frost := 0.0: set = set_current_frost
 
 @onready var hurtbox = $HurtBox
 @onready var sprite = $AnimatedSprite2D
@@ -62,6 +63,17 @@ func set_animations() -> void:
 		sprite.flip_h = false
 	elif velocity == Vector2.LEFT:
 		sprite.flip_h = true
+
+func set_current_frost(new_frost: float) -> void:
+	current_frost = clamp(new_frost, 0.0, frost_capacity)
+	
+	# TODO
+	if current_frost == frost_capacity:
+		# Wenn frost auf Maximum, dann soll der Player zb jede 10sec Schaden nehmen (mit Timer)
+		pass
+	else:
+		# der Timer für den Frostschaden ausschalten
+		pass
 
 func _on_get_damage(damage : int):
 	if hurtbox.health == 0:
