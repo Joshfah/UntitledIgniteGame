@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 @export var stamina : float = 300
 @export var stamina_rate : int = 50
-@export var speed : int = 500
+@export var speed : int = 80
 @export var frost_capacity := 200.0
 
 var has_axe : bool = false
@@ -28,6 +28,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	# Player erfriert nach einer Zeit
 	set_current_frost(current_frost + TimeCycleAutoload.current_coldness * delta)
+	
+	UiAutoload.ui.health = hurtbox.health
+	
 
 func _physics_process(delta: float) -> void:
 	get_input()
@@ -39,10 +42,10 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_pressed("SPRINT"):
 		stamina -= stamina_rate * delta
-		speed = 750
+		speed = 130
 	else:
 		stamina += stamina_rate * delta
-		speed = 500
+		speed = 100
 	
 	stamina = clamp(stamina, 0, 300)
 
@@ -60,12 +63,12 @@ func get_frost_damage() -> void:
 func movement() -> void:
 	if stamina <= 0:
 		stamina = 1
-		speed = 200
+		speed = 40
 		can_sprint = false
 		# send ui signal for canvas modulate
 		await get_tree().create_timer(5.0).timeout
 		can_sprint = true
-		speed = 500
+		speed = 100
 
 func set_current_frost(new_frost: float) -> void:
 	current_frost = clamp(new_frost, 0.0, frost_capacity)
@@ -75,6 +78,8 @@ func set_current_frost(new_frost: float) -> void:
 		_frost_damage_timer.start()
 
 func _on_get_damage():
+	UiAutoload.ui.health = hurtbox.health
+	
 	if hurtbox.health == 0:
 		set_physics_process(false)
 		collision.set_deferred("disabled", true)

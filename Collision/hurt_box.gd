@@ -13,6 +13,7 @@ func _ready() -> void:
 
 func set_health(new_health) -> void:
 	health = clamp(new_health, 0, max_health)
+	print(health)
 	if health == 0:
 		no_health.emit()
 

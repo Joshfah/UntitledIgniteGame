@@ -1,9 +1,12 @@
-[gd_scene load_steps=24 format=3 uid="uid://ccn3s6q1fwoel"]
+[gd_scene load_steps=28 format=3 uid="uid://ccn3s6q1fwoel"]
 
 [ext_resource type="Script" uid="uid://c5wntec1txq7j" path="res://Entities/Player/player.gd" id="1_lu8i8"]
 [ext_resource type="Texture2D" uid="uid://cqujr5utquhh1" path="res://assets/player-spritesheet-2.png" id="2_lu8i8"]
-[ext_resource type="Script" uid="uid://b63i0sjru02k7" path="res://Entities/Player/animations.gd" id="2_tekja"]
+[ext_resource type="Script" path="res://Entities/Player/animations.gd" id="2_tekja"]
 [ext_resource type="PackedScene" uid="uid://blbbrytgt780p" path="res://Collision/hurt_box.tscn" id="3_lu8i8"]
+[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="5_01a4e"]
+[ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="5_4wf4l"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="6_01a4e"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tekja"]
 atlas = ExtResource("2_lu8i8")
@@ -166,6 +169,12 @@ size = Vector2(10, 6)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tekja"]
 size = Vector2(14, 17)
 
+[sub_resource type="Resource" id="Resource_7a1se"]
+script = ExtResource("6_01a4e")
+duration = 1.0
+transition = 0
+ease = 2
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_lu8i8")
 
@@ -174,24 +183,38 @@ script = ExtResource("2_tekja")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ppdlg")
-animation = &"walk_up_axe"
+animation = &"idle_down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_3uyv8")
 
 [node name="HurtBox" parent="." instance=ExtResource("3_lu8i8")]
+max_health = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_tekja")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(1.5, 1.5)
-limit_smoothed = true
-position_smoothing_enabled = true
-position_smoothing_speed = 30.0
-
 [node name="FrostDamageTimer" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+physics_interpolation_mode = 1
+zoom = Vector2(2, 2)
+
+[node name="PhantomCameraHost" type="Node" parent="Camera2D"]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("5_01a4e")
+
+[node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
+top_level = true
+script = ExtResource("5_4wf4l")
+follow_mode = 5
+follow_target = NodePath("..")
+zoom = Vector2(2, 2)
+tween_resource = SubResource("Resource_7a1se")
+follow_damping = true
+follow_damping_value = Vector2(0.25, 0.25)

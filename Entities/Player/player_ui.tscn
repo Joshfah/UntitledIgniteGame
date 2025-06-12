@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=3 uid="uid://b2ysslnn5d877"]
+
+[ext_resource type="Texture2D" uid="uid://b16nown4um33o" path="res://assets/UI/heart-ui.png" id="1_f7l4j"]
+[ext_resource type="Script" uid="uid://cv34sunbfqsk8" path="res://Entities/Player/player_ui.gd" id="1_xupga"]
+[ext_resource type="Texture2D" uid="uid://klbymmov3uyq" path="res://assets/UI/stamina-ui.png" id="2_xupga"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ediu0"]
+resource_local_to_scene = true
+atlas = ExtResource("1_f7l4j")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xupga"]
+atlas = ExtResource("1_f7l4j")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hb5qb"]
+atlas = ExtResource("1_f7l4j")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n68j7"]
+atlas = ExtResource("2_xupga")
+region = Rect2(0, 32, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_emjl3"]
+atlas = ExtResource("2_xupga")
+region = Rect2(0, 0, 96, 32)
+
+[node name="PlayerUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xupga")
+
+[node name="Hearts" type="Node" parent="."]
+
+[node name="Heart1" type="Sprite2D" parent="Hearts"]
+position = Vector2(32, 24)
+texture = SubResource("AtlasTexture_ediu0")
+
+[node name="Heart2" type="Sprite2D" parent="Hearts"]
+position = Vector2(64, 24)
+texture = SubResource("AtlasTexture_xupga")
+
+[node name="Heart3" type="Sprite2D" parent="Hearts"]
+position = Vector2(96, 24)
+texture = SubResource("AtlasTexture_hb5qb")
+
+[node name="Stamina" type="Sprite2D" parent="."]
+position = Vector2(64, 56)
+texture = SubResource("AtlasTexture_n68j7")
+
+[node name="StaminaBar" type="Sprite2D" parent="Stamina"]
+texture = SubResource("AtlasTexture_emjl3")

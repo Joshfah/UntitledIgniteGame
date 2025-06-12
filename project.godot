@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 UiAutoload="*res://Autoloads/ui_autoload.gd"
 PlayerAutoload="*res://Autoloads/player_autoload.gd"
 TimeCycleAutoload="*res://Autoloads/time_cycle_autoload.gd"
+PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 
 [display]
 
@@ -27,6 +28,10 @@ window/size/viewport_height=380
 window/size/window_width_override=1152
 window/size/window_height_override=648
 window/stretch/mode="canvas_items"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/phantom_camera/plugin.cfg")
 
 [input]
 
