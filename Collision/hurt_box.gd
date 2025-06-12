@@ -8,10 +8,8 @@ signal get_hurt
 
 var health : int: set = set_health
 
-func _process(delta: float) -> void:
-	
-	print(PlayerAutoload.player.stamina)
-	
+func _ready() -> void:
+	set_health(max_health)
 
 func set_health(new_health) -> void:
 	health = clamp(new_health, 0, max_health)
@@ -21,3 +19,4 @@ func set_health(new_health) -> void:
 func get_damage(damage: int) -> void:
 	set_health(health - damage)
 	get_hurt.emit()
+	print("Player's Health: " + str(health))
