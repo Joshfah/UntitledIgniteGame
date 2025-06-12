@@ -1,9 +1,11 @@
 class_name Player
 extends CharacterBody2D
 
-var stamina : float = 300
-const stamina_rate : int = 50
-var speed : int = 500
+@export var stamina : float = 300
+@export var stamina_rate : int = 50
+@export var speed : int = 500
+@export var frost_capacity := 200.0
+
 var can_sprint : bool = true
 
 @onready var hurtbox = $HurtBox
