@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bc5ue46px48pl"]
+[gd_scene load_steps=5 format=3 uid="uid://6an45103aij8"]
 
 [ext_resource type="PackedScene" uid="uid://q5ijviybwflu" path="res://Entities/Enemy/Enemy.tscn" id="1_wmigs"]
 [ext_resource type="PackedScene" uid="uid://ccn3s6q1fwoel" path="res://Entities/Player/player.tscn" id="2_86c0p"]
+[ext_resource type="PackedScene" uid="uid://de127p3s5onlo" path="res://Bonfire/bonfire.tscn" id="3_86c0p"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_wmigs"]
 vertices = PackedVector2Array(618.211, 350.063, 26.2266, 353.93, 33.7813, 29.6172, 625.758, 6.39844)
@@ -19,3 +20,6 @@ position = Vector2(352, 156)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_wmigs")
+
+[node name="Bonfire" parent="." instance=ExtResource("3_86c0p")]
+position = Vector2(392, 264)
