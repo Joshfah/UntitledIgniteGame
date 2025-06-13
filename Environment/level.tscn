@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=4 uid="uid://buoxxxl8qgpxe"]
+[gd_scene load_steps=5 format=4 uid="uid://buoxxxl8qgpxe"]
 
 [ext_resource type="Script" uid="uid://182tbh3v2osp" path="res://Environment/level.gd" id="1_q5wpd"]
 [ext_resource type="PackedScene" uid="uid://b6nu548wdd4y0" path="res://Environment/TileMap/snow.tscn" id="2_t5trs"]
 [ext_resource type="PackedScene" uid="uid://3xtxabbwfpee" path="res://Environment/TileMap/dirt_path.tscn" id="3_7ckbr"]
 [ext_resource type="PackedScene" uid="uid://ccn3s6q1fwoel" path="res://Entities/Player/player.tscn" id="4_7ckbr"]
-[ext_resource type="PackedScene" uid="uid://b2ysslnn5d877" path="res://Entities/Player/player_ui.tscn" id="5_ihm8p"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_q5wpd")
@@ -19,9 +18,4 @@ tile_map_data = PackedByteArray("AAACAAIAAAABAAIAAAADAAIAAAACAAAAAAADAAMAAAABAAE
 
 [node name="Player" parent="." instance=ExtResource("4_7ckbr")]
 position = Vector2(92, 90)
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-scale = Vector2(1.25, 1.25)
-transform = Transform2D(1.25, 0, 0, 1.25, 0, 0)
-
-[node name="PlayerUI" parent="CanvasLayer" instance=ExtResource("5_ihm8p")]
+has_axe = false
