@@ -21,6 +21,9 @@ func _process(delta: float) -> void:
 	elif x < 0:
 		flip = true
 	
+	if x != 0 && y == 0:
+		last_vertical_dir = "down"
+	
 	var animation : String = "walk_" + last_vertical_dir
 	
 	if player.velocity == Vector2.ZERO:

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c5wntec1txq7j" path="res://Entities/Player/player.gd" id="1_lu8i8"]
 [ext_resource type="Texture2D" uid="uid://cqujr5utquhh1" path="res://assets/player-spritesheet-2.png" id="2_lu8i8"]
-[ext_resource type="Script" path="res://Entities/Player/animations.gd" id="2_tekja"]
+[ext_resource type="Script" uid="uid://b63i0sjru02k7" path="res://Entities/Player/animations.gd" id="2_tekja"]
 [ext_resource type="PackedScene" uid="uid://blbbrytgt780p" path="res://Collision/hurt_box.tscn" id="3_lu8i8"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="5_01a4e"]
 [ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="5_4wf4l"]
@@ -183,7 +183,7 @@ script = ExtResource("2_tekja")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ppdlg")
-animation = &"idle_down"
+animation = &"walk_up_axe"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4)
@@ -218,3 +218,6 @@ zoom = Vector2(2, 2)
 tween_resource = SubResource("Resource_7a1se")
 follow_damping = true
 follow_damping_value = Vector2(0.25, 0.25)
+
+[node name="Marker2D" type="Marker2D" parent="."]
+gizmo_extents = 0.0

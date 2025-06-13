@@ -21,14 +21,11 @@ func _process(delta: float) -> void:
 	
 	var hearts_remaining : int = hearts_remainingf
 	
-	print(hearts_remaining)
-	
 	for n in range(heartsprites.size()):
 		if n <= hearts_remaining - 1:
 			heartsprites[n].texture.set("region", Rect2(0, 0, 32, 32))
 		if n > hearts_remaining - 1:
 			heartsprites[n].texture.set("region", Rect2(64, 0, 32, 32))
-		
 		
 	if health % 2 != 0:
 		heartsprites[hearts_remaining - 1].texture.set("region", Rect2(32, 0, 32, 32))
