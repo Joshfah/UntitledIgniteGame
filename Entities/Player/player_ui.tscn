@@ -125,6 +125,7 @@ tint_under = Color(0, 0.1, 1, 0.0705882)
 tint_progress = Color(0, 0.133333, 1, 0.619608)
 
 [node name="InjuryHUD" type="ColorRect" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_hb5qb")
 layout_mode = 1
 anchors_preset = 15

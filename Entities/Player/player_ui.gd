@@ -24,6 +24,7 @@ var heartsprites : Array[Node]
 var _tween : Tween
 
 func _ready() -> void:
+	show()
 	UiAutoload.ui = self
 	_tween = create_tween()
 	_reset_tween()
