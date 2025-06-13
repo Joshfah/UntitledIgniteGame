@@ -5,8 +5,8 @@ extends CharacterBody2D
 @export var stamina_rate : int = 50
 @export var speed : int = 80
 @export var frost_capacity := 200.0
+@export var has_axe : bool = false
 
-var has_axe : bool = false
 var can_sprint : bool = true
 var current_frost := 0.0: set = set_current_frost
 
@@ -28,8 +28,10 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	# Player erfriert nach einer Zeit
 	set_current_frost(current_frost + TimeCycleAutoload.current_coldness * delta)
-	
-	UiAutoload.ui.health = hurtbox.health
+	# Fehlermeldung, weil an dem Zeitpunkt ui immernoch NULL ist
+	# Lösung: PlayerUI in Player selbst einbringen
+	var ui := UiAutoload.ui as UI
+	ui.health = hurtbox.health
 	
 
 func _physics_process(delta: float) -> void:

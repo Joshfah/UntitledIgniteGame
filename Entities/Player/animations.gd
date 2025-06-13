@@ -6,7 +6,7 @@ extends Node2D
 var last_vertical_dir : String = "down"
 var flip : bool = false
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	
 	var x = sign(player.velocity.x)
 	var y = sign(player.velocity.y)
