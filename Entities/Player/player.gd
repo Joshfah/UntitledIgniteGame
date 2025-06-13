@@ -6,7 +6,7 @@ extends CharacterBody2D
 @export var stamina_rate : int = 50
 @export var speed : int = 80
 @export var frost_capacity := 200.0
-@export var has_axe : bool = false
+@export var has_axe : bool = true
 
 var can_sprint : bool = true
 var current_frost := 0.0: set = set_current_frost
@@ -17,6 +17,8 @@ var current_frost := 0.0: set = set_current_frost
 @onready var hurtboxshape = $HurtBox/CollisionShape2D
 @onready var camera = $Camera2D
 @onready var _frost_damage_timer := $FrostDamageTimer
+@onready var hitbox := $HitBox
+@onready var hitboxshape = $HitBox/CollisionShape2D
 
 func _ready() -> void:
 	
@@ -60,6 +62,17 @@ func _physics_process(delta: float) -> void:
 func get_input() -> void:
 	var input_direction = Input.get_vector("A", "D", "W", "S")
 	velocity = input_direction.normalized() * speed
+	
+	if Input.is_action_just_pressed("HIT"):
+		
+		hitbox.set_deferred("monitorable", true)
+		hitboxshape.set_deferred("disabled", false)
+		
+		await sprite.animation_finished
+		
+		hitbox.set_deferred("monitorable", false)
+		hitboxshape.set_deferred("disabled", true)
+
 
 ## Wenn immernoch der Frostbalken voll ist, dann Schaden nehmen und Timer neu starten
 func get_frost_damage() -> void:
