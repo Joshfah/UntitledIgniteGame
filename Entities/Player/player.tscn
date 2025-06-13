@@ -1,12 +1,13 @@
-[gd_scene load_steps=28 format=3 uid="uid://ccn3s6q1fwoel"]
+[gd_scene load_steps=29 format=3 uid="uid://ccn3s6q1fwoel"]
 
 [ext_resource type="Script" uid="uid://c5wntec1txq7j" path="res://Entities/Player/player.gd" id="1_lu8i8"]
 [ext_resource type="Texture2D" uid="uid://cqujr5utquhh1" path="res://assets/player-spritesheet-2.png" id="2_lu8i8"]
-[ext_resource type="Script" path="res://Entities/Player/animations.gd" id="2_tekja"]
+[ext_resource type="Script" uid="uid://b63i0sjru02k7" path="res://Entities/Player/animations.gd" id="2_tekja"]
 [ext_resource type="PackedScene" uid="uid://blbbrytgt780p" path="res://Collision/hurt_box.tscn" id="3_lu8i8"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="5_01a4e"]
 [ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="5_4wf4l"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="6_01a4e"]
+[ext_resource type="PackedScene" uid="uid://b2ysslnn5d877" path="res://Entities/Player/player_ui.tscn" id="8_7a1se"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tekja"]
 atlas = ExtResource("2_lu8i8")
@@ -177,20 +178,21 @@ ease = 2
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_lu8i8")
+has_axe = true
 
 [node name="Animations" type="Node2D" parent="."]
 script = ExtResource("2_tekja")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ppdlg")
-animation = &"idle_down"
+animation = &"idle_down_axe"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_3uyv8")
 
 [node name="HurtBox" parent="." instance=ExtResource("3_lu8i8")]
-max_health = 6
+max_health = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 position = Vector2(0, 0.5)
@@ -218,3 +220,9 @@ zoom = Vector2(2, 2)
 tween_resource = SubResource("Resource_7a1se")
 follow_damping = true
 follow_damping_value = Vector2(0.25, 0.25)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+scale = Vector2(1.25, 1.25)
+transform = Transform2D(1.25, 0, 0, 1.25, 0, 0)
+
+[node name="PlayerUI" parent="CanvasLayer" instance=ExtResource("8_7a1se")]

@@ -48,6 +48,10 @@ texture = SubResource("AtlasTexture_xupga")
 position = Vector2(96, 24)
 texture = SubResource("AtlasTexture_hb5qb")
 
+[node name="Heart4" type="Sprite2D" parent="Hearts"]
+position = Vector2(128, 24)
+texture = SubResource("AtlasTexture_hb5qb")
+
 [node name="Stamina" type="Sprite2D" parent="."]
 position = Vector2(64, 56)
 texture = SubResource("AtlasTexture_n68j7")
