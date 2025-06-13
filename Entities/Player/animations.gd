@@ -5,6 +5,7 @@ extends Node2D
 
 var last_vertical_dir : String = "down"
 var flip : bool = false
+var hitting : bool = false
 
 func _process(_delta: float) -> void:
 	
@@ -24,13 +25,29 @@ func _process(_delta: float) -> void:
 	if x != 0 && y == 0:
 		last_vertical_dir = "down"
 	
-	var animation : String = "walk_" + last_vertical_dir
+	var animation : String
+	if player.velocity != Vector2.ZERO && !hitting:
+		animation  = "walk_" + last_vertical_dir
 	
-	if player.velocity == Vector2.ZERO:
+	if player.velocity == Vector2.ZERO && !hitting:
 		animation = "idle_" + last_vertical_dir
 	
 	if player.has_axe:
 		animation = animation + "_axe"
+		
+		if Input.is_action_just_pressed("HIT"):
+			hitting = true
+			
+			player.set_physics_process(false)
+			
+			print("hit_" + last_vertical_dir)
+			sprite.play("hit_" + last_vertical_dir)
+			
+			await sprite.animation_finished
+			
+			player.set_physics_process(true)
+			hitting = false
+	
 	
 	sprite.flip_h = flip
 	
