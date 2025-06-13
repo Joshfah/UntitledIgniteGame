@@ -26,6 +26,8 @@ func _ready() -> void:
 	# Wenn abgelaufen, dann Frostschaden
 	_frost_damage_timer.timeout.connect(get_frost_damage)
 	
+	UiAutoload.ui.max_health = hurtbox.max_health
+	UiAutoload.ui.health = hurtbox.health
 	UiAutoload.ui.max_stamina = max_stamina
 	UiAutoload.ui.max_frost = frost_capacity
 
@@ -35,7 +37,6 @@ func _process(delta: float) -> void:
 	# Fehlermeldung, weil an dem Zeitpunkt ui immernoch NULL ist
 	# Lösung: PlayerUI in Player selbst einbringen
 	var ui := UiAutoload.ui as UI
-	ui.health = hurtbox.health
 	ui.current_stamina = stamina
 	ui.current_frost = current_frost
 
