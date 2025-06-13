@@ -1,7 +1,8 @@
 class_name Player
 extends CharacterBody2D
 
-@export var stamina : float = 300
+@export var stamina : float = 300.0
+@export var max_stamina := 300.0
 @export var stamina_rate : int = 50
 @export var speed : int = 80
 @export var frost_capacity := 200.0
@@ -24,6 +25,11 @@ func _ready() -> void:
 	hurtbox.get_hurt.connect(_on_get_damage)
 	# Wenn abgelaufen, dann Frostschaden
 	_frost_damage_timer.timeout.connect(get_frost_damage)
+	
+	UiAutoload.ui.max_health = hurtbox.max_health
+	UiAutoload.ui.health = hurtbox.health
+	UiAutoload.ui.max_stamina = max_stamina
+	UiAutoload.ui.max_frost = frost_capacity
 
 func _process(delta: float) -> void:
 	# Player erfriert nach einer Zeit
@@ -31,8 +37,8 @@ func _process(delta: float) -> void:
 	# Fehlermeldung, weil an dem Zeitpunkt ui immernoch NULL ist
 	# Lösung: PlayerUI in Player selbst einbringen
 	var ui := UiAutoload.ui as UI
-	ui.health = hurtbox.health
-	
+	ui.current_stamina = stamina
+	ui.current_frost = current_frost
 
 func _physics_process(delta: float) -> void:
 	get_input()
@@ -49,7 +55,7 @@ func _physics_process(delta: float) -> void:
 		stamina += stamina_rate * delta
 		speed = 100
 	
-	stamina = clamp(stamina, 0, 300)
+	stamina = clamp(stamina, 0, max_stamina)
 
 func get_input() -> void:
 	var input_direction = Input.get_vector("A", "D", "W", "S")

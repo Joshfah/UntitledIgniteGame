@@ -1,8 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://b2ysslnn5d877"]
+[gd_scene load_steps=19 format=3 uid="uid://b2ysslnn5d877"]
 
 [ext_resource type="Texture2D" uid="uid://b16nown4um33o" path="res://assets/UI/heart-ui.png" id="1_f7l4j"]
 [ext_resource type="Script" uid="uid://cv34sunbfqsk8" path="res://Entities/Player/player_ui.gd" id="1_xupga"]
 [ext_resource type="Texture2D" uid="uid://klbymmov3uyq" path="res://assets/UI/stamina-ui.png" id="2_xupga"]
+[ext_resource type="Shader" uid="uid://dk0iuov5uj3u6" path="res://Shaders/focus_shader.gdshader" id="4_n68j7"]
+[ext_resource type="Script" uid="uid://donmm7h6g3fc7" path="res://Shaders/focus_shader.gd" id="5_emjl3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ediu0"]
 resource_local_to_scene = true
@@ -21,13 +23,49 @@ region = Rect2(0, 0, 32, 32)
 atlas = ExtResource("1_f7l4j")
 region = Rect2(0, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_emjl3"]
+atlas = ExtResource("2_xupga")
+region = Rect2(0, 0, 96, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_n68j7"]
 atlas = ExtResource("2_xupga")
 region = Rect2(0, 32, 96, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_emjl3"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_toslg"]
 atlas = ExtResource("2_xupga")
 region = Rect2(0, 0, 96, 32)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_n68j7"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_emjl3"]
+noise = SubResource("FastNoiseLite_n68j7")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hb5qb"]
+shader = ExtResource("4_n68j7")
+shader_parameter/noise = SubResource("NoiseTexture2D_emjl3")
+shader_parameter/line_color = Color(0.32, 0.0256, 0.0256, 1)
+shader_parameter/line_count = 1.1
+shader_parameter/line_density = 1.0
+shader_parameter/line_faloff = 1.0
+shader_parameter/mask_size = 0.269
+shader_parameter/mask_edge = 0.5
+shader_parameter/animation_speed = 0.5
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_hb5qb"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_dpke0"]
+noise = SubResource("FastNoiseLite_hb5qb")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n68j7"]
+shader = ExtResource("4_n68j7")
+shader_parameter/noise = SubResource("NoiseTexture2D_dpke0")
+shader_parameter/line_color = Color(0.2898, 0.43654, 0.69, 1)
+shader_parameter/line_count = 0.45
+shader_parameter/line_density = 1.0
+shader_parameter/line_faloff = 1.0
+shader_parameter/mask_size = 0.0
+shader_parameter/mask_edge = 0.478
+shader_parameter/animation_speed = 0.5
 
 [node name="PlayerUI" type="Control"]
 layout_mode = 3
@@ -38,7 +76,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_xupga")
 
-[node name="Hearts" type="Node" parent="."]
+[node name="Hearts" type="Node2D" parent="."]
 
 [node name="Heart1" type="Sprite2D" parent="Hearts"]
 position = Vector2(32, 24)
@@ -56,9 +94,54 @@ texture = SubResource("AtlasTexture_hb5qb")
 position = Vector2(128, 24)
 texture = SubResource("AtlasTexture_dpke0")
 
-[node name="Stamina" type="Sprite2D" parent="."]
-position = Vector2(64, 56)
-texture = SubResource("AtlasTexture_n68j7")
+[node name="StaminaBar" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 40.0
+offset_right = 144.0
+offset_bottom = 80.0
+max_value = 300.0
+value = 100.0
+nine_patch_stretch = true
+texture_under = SubResource("AtlasTexture_emjl3")
+texture_over = SubResource("AtlasTexture_n68j7")
+texture_progress = SubResource("AtlasTexture_toslg")
+tint_under = Color(1, 1, 1, 0.0705882)
 
-[node name="StaminaBar" type="Sprite2D" parent="Stamina"]
-texture = SubResource("AtlasTexture_emjl3")
+[node name="FrostBar" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_left = 252.0
+offset_top = 320.0
+offset_right = 380.0
+offset_bottom = 360.0
+max_value = 300.0
+value = 235.0
+fill_mode = 6
+nine_patch_stretch = true
+texture_under = SubResource("AtlasTexture_emjl3")
+texture_over = SubResource("AtlasTexture_n68j7")
+texture_progress = SubResource("AtlasTexture_toslg")
+tint_under = Color(0, 0.1, 1, 0.0705882)
+tint_progress = Color(0, 0.133333, 1, 0.619608)
+
+[node name="InjuryHUD" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_hb5qb")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_emjl3")
+
+[node name="FrostHUD" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_n68j7")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("5_emjl3")
