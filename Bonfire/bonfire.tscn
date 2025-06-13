@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://de127p3s5onlo"]
+[gd_scene load_steps=7 format=3 uid="uid://de127p3s5onlo"]
 
 [ext_resource type="Script" uid="uid://bmceblubvl5b8" path="res://Bonfire/bonfire.gd" id="1_s8pws"]
 [ext_resource type="Texture2D" uid="uid://cskbxa08ypqnl" path="res://assets/tree-stump.png" id="2_buw6a"]
 [ext_resource type="Texture2D" uid="uid://uttxoxjq1bew" path="res://assets/flame.png" id="3_buw6a"]
+[ext_resource type="Texture2D" uid="uid://2p3hvt7sbqdq" path="res://assets/LightSprite.png" id="4_70l5l"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_70l5l"]
 radius = 4.0
@@ -36,3 +37,9 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HeatArea"]
 shape = SubResource("CircleShape2D_buw6a")
 debug_color = Color(0.88331, 0.309759, 0.33669, 0.42)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(1, 0.35, 0.35, 1)
+energy = 0.1
+texture = ExtResource("4_70l5l")
+texture_scale = 0.1
