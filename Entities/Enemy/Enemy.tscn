@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://q5ijviybwflu"]
+[gd_scene load_steps=12 format=3 uid="uid://q5ijviybwflu"]
 
 [ext_resource type="Script" uid="uid://v0hqptqg7puh" path="res://Entities/Enemy/enemy.gd" id="1_7s3rp"]
 [ext_resource type="PackedScene" uid="uid://blbbrytgt780p" path="res://Collision/hurt_box.tscn" id="2_bgbm4"]
 [ext_resource type="PackedScene" uid="uid://b5echm1va85eq" path="res://Collision/hit_box.tscn" id="3_3l5gm"]
 [ext_resource type="Texture2D" uid="uid://bh72vonep8o6m" path="res://assets/wolf.png" id="4_7s3rp"]
+[ext_resource type="Material" uid="uid://d2ysleqyn5x2a" path="res://Shaders/light_only.tres" id="4_bgbm4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_y11p7"]
 radius = 8.0
@@ -70,6 +71,10 @@ shape = SubResource("CircleShape2D_bgbm4")
 debug_color = Color(0.855195, 0.31286, 0.504597, 0.42)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.73, 0.73, 0.73, 1)
+light_mask = 2
+visibility_layer = 2
+material = ExtResource("4_bgbm4")
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_bgbm4")
 autoplay = "default"
