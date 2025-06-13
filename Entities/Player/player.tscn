@@ -324,7 +324,7 @@ follow_damping_value = Vector2(0.25, 0.25)
 gizmo_extents = 0.0
 
 [node name="HitBox" parent="." instance=ExtResource("8_7a1se")]
-position = Vector2(7, -6)
+position = Vector2(0, 12)
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]

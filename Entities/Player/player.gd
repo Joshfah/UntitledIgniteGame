@@ -58,6 +58,7 @@ func get_input() -> void:
 	velocity = input_direction.normalized() * speed
 	
 	if Input.is_action_just_pressed("HIT"):
+		
 		hitbox.set_deferred("monitorable", true)
 		hitboxshape.set_deferred("disabled", false)
 		
@@ -65,6 +66,7 @@ func get_input() -> void:
 		
 		hitbox.set_deferred("monitorable", false)
 		hitboxshape.set_deferred("disabled", true)
+
 
 ## Wenn immernoch der Frostbalken voll ist, dann Schaden nehmen und Timer neu starten
 func get_frost_damage() -> void:
