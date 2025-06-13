@@ -15,11 +15,11 @@ func _ready() -> void:
 	
 	heartsprites = hearts.get_children()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var hearts_remainingf : float = float(health) / 2
 	hearts_remainingf += 0.5
 	
-	var hearts_remaining : int = hearts_remainingf
+	var hearts_remaining : int = int(hearts_remainingf)
 	
 	for n in range(heartsprites.size()):
 		if n <= hearts_remaining - 1:
