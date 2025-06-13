@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b2ysslnn5d877"]
+[gd_scene load_steps=10 format=3 uid="uid://b2ysslnn5d877"]
 
 [ext_resource type="Texture2D" uid="uid://b16nown4um33o" path="res://assets/UI/heart-ui.png" id="1_f7l4j"]
 [ext_resource type="Script" uid="uid://cv34sunbfqsk8" path="res://Entities/Player/player_ui.gd" id="1_xupga"]
@@ -14,6 +14,10 @@ atlas = ExtResource("1_f7l4j")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hb5qb"]
+atlas = ExtResource("1_f7l4j")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dpke0"]
 atlas = ExtResource("1_f7l4j")
 region = Rect2(0, 0, 32, 32)
 
@@ -50,7 +54,7 @@ texture = SubResource("AtlasTexture_hb5qb")
 
 [node name="Heart4" type="Sprite2D" parent="Hearts"]
 position = Vector2(128, 24)
-texture = SubResource("AtlasTexture_hb5qb")
+texture = SubResource("AtlasTexture_dpke0")
 
 [node name="Stamina" type="Sprite2D" parent="."]
 position = Vector2(64, 56)

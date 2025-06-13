@@ -4,5 +4,5 @@
 
 [node name="HitBox" type="Area2D"]
 collision_layer = 0
-monitoring = false
+monitorable = false
 script = ExtResource("1_iy6te")

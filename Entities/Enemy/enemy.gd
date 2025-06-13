@@ -3,32 +3,56 @@ extends CharacterBody2D
 
 enum State {
 	IDLE,
-	CHASE
+	CHASE,
+	ATTACK
 }
 
-@export_range(10.0, 100.0, 0.1, "or_greater") var speed := 50.0
+@export_range(10.0, 100.0, 0.1, "or_greater") var normal_speed := 50.0
 @export_range(0.01, 1.0, 0.01) var acceleration := 0.05
+@export_group("Attack", "attack")
+## Der Delay bevor die Attacke losgeht
+@export_range(0.1, 1.0, 0.1, "or_greater") var attack_prepare_duration := 0.5
+## Die Sprunggeschwindigkeit
+@export_range(50.0, 500.0, 0.5) var attack_dash_speed := 400.0
+## Die Sprungreichweite
+@export_range(10.0, 100.0, 0.1) var attack_dash_range := 50.0
+## Nach der Attacke wird verlangsamt und gewinnt nach einer kurze Zeit wieder an die normale Geschwindigkeit (normal_speed)
+@export_range(10.0, 50.0, 0.1) var attack_penalty_speed := 10.0
 
 @onready var _hurt_box := $HurtBox
 @onready var _nav_agent := $NavigationAgent2D
 @onready var _reachable_area := $ReachableArea
+@onready var _attack_area := $AttackArea
 @onready var _ray_cast := $RayCast2D
 @onready var _path_timer := $PathTimer
+@onready var _prepare_timer := $PrepareTimer
+@onready var _animated_sprite := $AnimatedSprite2D
 
 var state : State = State.IDLE
 var target : Player
+var speed := 0.0
+var is_preparing_to_attack := false
+
+var _jump_direction : Vector2
+var _distance_reach := 0.0
 
 func _ready() -> void:
+	# connections
 	_hurt_box.no_health.connect(_die)
 	_reachable_area.body_exited.connect(_on_reachable_area_body_exited)
+	_attack_area.body_entered.connect(_on_attack_area_body_entered)
 	_nav_agent.velocity_computed.connect(_on_navigation_agent_2d_velocity_computed)
 	_path_timer.timeout.connect(_recalc_path)
+	# Preset
+	speed = normal_speed
+	_prepare_timer.wait_time = attack_prepare_duration
 	if not PlayerAutoload.player:
 		await get_tree().process_frame
 	target = PlayerAutoload.player
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	_ray_cast.look_at(PlayerAutoload.player.global_position)
+	_animated_sprite.flip_h = velocity.x > 0
 	match state:
 		State.IDLE:
 			velocity = Vector2.ZERO
@@ -37,6 +61,9 @@ func _physics_process(_delta: float) -> void:
 				print("is chasing")
 		State.CHASE:
 			_chase()
+		State.ATTACK:
+			_attack(delta)
+
 
 func _chase() -> void:
 	var direction : Vector2 = (_nav_agent.get_next_path_position() - global_position).normalized()
@@ -45,11 +72,36 @@ func _chase() -> void:
 	_nav_agent.set_velocity(steering_vector)
 	#print(steering_vector)
 
+func _attack(delta: float) -> void:
+	if not _prepare_timer.is_stopped():
+		return
+	velocity = _jump_direction * attack_dash_speed
+	move_and_slide()
+	_distance_reach += attack_dash_speed * delta
+	if _distance_reach > attack_dash_range:
+		velocity = Vector2.ZERO
+		_distance_reach = 0.0
+		_jump_direction = Vector2.ZERO
+		var tween := create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUART)
+		speed = attack_penalty_speed
+		tween.tween_property(self, "speed", normal_speed, 1.0)
+		is_preparing_to_attack = false
+		state = State.CHASE
+
 func _die() -> void:
 	queue_free()
 
 func _recalc_path() -> void:
 	_nav_agent.set_target_position(target.global_position)
+
+func _on_attack_area_body_entered(body: Node2D) -> void:
+	if not body is Player or is_preparing_to_attack:
+		return
+	_jump_direction = (target.global_position - global_position).normalized()
+	is_preparing_to_attack = true
+	_prepare_timer.start()
+	velocity = Vector2.ZERO
+	state = State.ATTACK
 
 func _on_reachable_area_body_exited(body: Node2D) -> void:
 	var player := body as Player
@@ -59,5 +111,7 @@ func _on_reachable_area_body_exited(body: Node2D) -> void:
 	print("is not chasing")
 
 func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
-	velocity += safe_velocity.limit_length(speed / 2) * acceleration
+	if is_preparing_to_attack:
+		return
+	velocity += safe_velocity.limit_length(normal_speed / 2) * acceleration
 	move_and_slide()

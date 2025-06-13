@@ -18,4 +18,3 @@ tile_map_data = PackedByteArray("AAACAAIAAAABAAIAAAADAAIAAAACAAAAAAADAAMAAAABAAE
 
 [node name="Player" parent="." instance=ExtResource("4_7ckbr")]
 position = Vector2(92, 90)
-has_axe = false
