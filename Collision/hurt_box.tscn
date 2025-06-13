@@ -4,5 +4,5 @@
 
 [node name="HurtBox" type="Area2D"]
 collision_mask = 0
-monitorable = false
+monitoring = false
 script = ExtResource("1_ti7qb")
