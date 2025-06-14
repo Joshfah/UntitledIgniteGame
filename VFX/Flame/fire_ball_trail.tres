@@ -1,0 +1,26 @@
+[gd_resource type="ParticleProcessMaterial" load_steps=4 format=3 uid="uid://c01h2hxplkl1w"]
+
+[ext_resource type="Texture2D" uid="uid://7j31m5x2dx1p" path="res://VFX/Flame/fire_ball_ramp.tres" id="1_as1aq"]
+
+[sub_resource type="Curve" id="Curve_mc6ld"]
+_data = [Vector2(0, 0.802198), 0.0, 0.0, 0, 0, Vector2(0.333333, 1), -4.07529e-07, -4.07529e-07, 0, 0, Vector2(1, 0.318681), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_vmqg6"]
+curve = SubResource("Curve_mc6ld")
+
+[resource]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 1.76
+angle_max = 360.0
+spread = 180.0
+initial_velocity_min = 0.25
+initial_velocity_max = 0.75
+gravity = Vector3(0, -50, 0)
+radial_accel_min = 1.6
+radial_accel_max = 1.6
+damping_min = 1.385
+damping_max = 1.385
+scale_curve = SubResource("CurveTexture_vmqg6")
+color_ramp = ExtResource("1_as1aq")

@@ -6,6 +6,8 @@ extends CharacterBody2D
 @export var stamina_rate : int = 50
 @export var speed : int = 80
 @export var frost_capacity := 200.0
+@export var max_wood := 10
+@export var wood := 0: set = set_wood
 @export var has_axe : bool = true
 
 var can_sprint : bool = true
@@ -90,6 +92,10 @@ func movement() -> void:
 		await get_tree().create_timer(5.0).timeout
 		can_sprint = true
 		speed = 100
+
+func set_wood(new_wood: int) -> void:
+	wood = clamp(new_wood, 0, max_wood)
+	# UI...
 
 func set_current_frost(new_frost: float) -> void:
 	current_frost = clamp(new_frost, 0.0, frost_capacity)
