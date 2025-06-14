@@ -23,6 +23,7 @@ mood_color_night = Color(0.079, 0.0839, 0.1, 1)
 
 [node name="Player" parent="." instance=ExtResource("4_7ckbr")]
 position = Vector2(101, 93)
+wood = 10
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.24, 0.24, 0.24, 1)

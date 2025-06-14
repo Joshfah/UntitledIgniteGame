@@ -1,9 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://de127p3s5onlo"]
+[gd_scene load_steps=12 format=3 uid="uid://de127p3s5onlo"]
 
 [ext_resource type="Script" uid="uid://bmceblubvl5b8" path="res://Bonfire/bonfire.gd" id="1_s8pws"]
+[ext_resource type="PackedScene" uid="uid://bv15x0wjh0ld4" path="res://VFX/Flame/ignite_particles.tscn" id="2_1f1rl"]
 [ext_resource type="Texture2D" uid="uid://cskbxa08ypqnl" path="res://assets/tree-stump.png" id="2_buw6a"]
 [ext_resource type="Texture2D" uid="uid://uttxoxjq1bew" path="res://assets/flame.png" id="3_buw6a"]
-[ext_resource type="Texture2D" uid="uid://2p3hvt7sbqdq" path="res://assets/LightSprite.png" id="4_70l5l"]
+[ext_resource type="Texture2D" uid="uid://bey5xbcyskhek" path="res://VFX/Flame/Puff.png" id="3_dsyyl"]
+[ext_resource type="Material" uid="uid://c01h2hxplkl1w" path="res://VFX/Flame/fire_ball_trail.tres" id="4_1f1rl"]
+[ext_resource type="Texture2D" uid="uid://f3xjujiltuuw" path="res://assets/LightSprite.png" id="4_70l5l"]
+[ext_resource type="Texture2D" uid="uid://knex3secpdbn" path="res://VFX/Flame/Sparkle.png" id="5_3f3cn"]
+[ext_resource type="Material" uid="uid://bdptvqbl8ls8w" path="res://VFX/Flame/fire_sparkles.tres" id="6_or7rd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_70l5l"]
 radius = 4.0
@@ -15,6 +20,7 @@ radius = 24.0
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_s8pws")
+ignite_particles_scene = ExtResource("2_1f1rl")
 recharge_rate = 100.0
 heat_power = 12.0
 
@@ -24,7 +30,21 @@ texture = ExtResource("2_buw6a")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_70l5l")
 
+[node name="FlameParticles" type="Node2D" parent="."]
+position = Vector2(0, -4)
+
+[node name="FireBallTrail" type="GPUParticles2D" parent="FlameParticles"]
+amount = 6
+texture = ExtResource("3_dsyyl")
+process_material = ExtResource("4_1f1rl")
+
+[node name="FireSparkles" type="GPUParticles2D" parent="FlameParticles"]
+amount = 10
+texture = ExtResource("5_3f3cn")
+process_material = ExtResource("6_or7rd")
+
 [node name="Flame" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(0, -12)
 texture = ExtResource("3_buw6a")
 region_enabled = true
@@ -40,6 +60,6 @@ debug_color = Color(0.88331, 0.309759, 0.33669, 0.42)
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 color = Color(1, 0.35, 0.35, 1)
-energy = 0.1
+energy = 0.2
 texture = ExtResource("4_70l5l")
-texture_scale = 0.1
+texture_scale = 0.2
