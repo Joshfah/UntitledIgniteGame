@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://7djoeflifrka"]
+
+[ext_resource type="Texture2D" uid="uid://c1ilm0fa6poll" path="res://VFX/assets/Sparkle.png" id="1_mgotq"]
+
+[sub_resource type="Gradient" id="Gradient_idgkq"]
+offsets = PackedFloat32Array(0, 0.109244, 0.302521, 0.478992, 0.663866, 0.865546, 1)
+colors = PackedColorArray(1, 0.72549, 0.6, 0, 1, 0.726667, 0.6, 1, 1, 0.456759, 0.183333, 1, 1, 0.35, 0, 1, 0.799922, 0.13281, 0, 1, 0.56, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_e2m4h"]
+gradient = SubResource("Gradient_idgkq")
+
+[sub_resource type="Curve" id="Curve_jc8og"]
+_data = [Vector2(0, 0.494505), 0.0, 0.0, 0, 0, Vector2(0.510204, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.505494), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_62mue"]
+curve = SubResource("Curve_jc8og")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_slbg3"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 3.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.5
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_62mue")
+color_ramp = SubResource("GradientTexture1D_e2m4h")
+
+[node name="FireSparkles" type="GPUParticles2D"]
+amount = 16
+process_material = SubResource("ParticleProcessMaterial_slbg3")
+texture = ExtResource("1_mgotq")
+lifetime = 0.6

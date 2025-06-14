@@ -17,6 +17,7 @@ position = Vector2(112, 88)
 
 [node name="Player" parent="." instance=ExtResource("2_86c0p")]
 position = Vector2(352, 156)
+wood = 3
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_wmigs")
