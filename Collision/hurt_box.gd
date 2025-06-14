@@ -9,10 +9,12 @@ signal get_hurt
 var health : int: set = set_health
 
 func _ready() -> void:
+	await get_tree().physics_frame
 	set_health(max_health)
 
 func set_health(new_health) -> void:
 	health = clamp(new_health, 0, max_health)
+	UiAutoload.ui.set_health(health)
 	print(health)
 	if health == 0:
 		no_health.emit()
