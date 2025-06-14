@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://dstjniwkmu7px"]
+
+[ext_resource type="Texture2D" uid="uid://bbag4gpoaj6i5" path="res://assets/bear-npc.png" id="1_yiwvw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d87ea"]
+size = Vector2(24, 28)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ahjw4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_yiwvw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Curve2D" id="Curve2D_hd8eo"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 8, 0, 0, 0, 0, 1, 6, 0, 0, 0, 0, 3, 2, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 8, -1, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 11, 3, 0, 0, 0, 0, 11, 9, 0, 0, 0, 0, 11, 14, 0, 0, 0, 0, 11, 18, 0, 0, 0, 0, 11, 22, 0, 0, 0, 0, 11, 25)
+}
+point_count = 12
+
+[node name="Trader" type="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_d87ea")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ahjw4")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+
+[node name="DropPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_hd8eo")
