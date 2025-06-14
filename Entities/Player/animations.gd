@@ -58,6 +58,9 @@ func _process(_delta: float) -> void:
 			hitting = false
 	sprite.flip_h = flip
 	
+	if animation == "_axe":
+		animation = ""
+	
 	sprite.play(animation)
 
 func set_hitbox_pos() -> void:
