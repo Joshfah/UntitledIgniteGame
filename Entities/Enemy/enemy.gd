@@ -58,6 +58,7 @@ func _physics_process(delta: float) -> void:
 			velocity = Vector2.ZERO
 			if _ray_cast.get_collider() is Player:
 				state = State.CHASE
+				_play("run")
 				print("is chasing")
 		State.CHASE:
 			_chase()
@@ -78,6 +79,7 @@ func _attack(delta: float) -> void:
 	velocity = _jump_direction * attack_dash_speed
 	move_and_slide()
 	_distance_reach += attack_dash_speed * delta
+	#_play("attack")
 	if _distance_reach > attack_dash_range:
 		velocity = Vector2.ZERO
 		_distance_reach = 0.0
@@ -87,6 +89,12 @@ func _attack(delta: float) -> void:
 		tween.tween_property(self, "speed", normal_speed, 1.0)
 		is_preparing_to_attack = false
 		state = State.CHASE
+		_play("run")
+
+func _play(animation: String) -> void:
+	if _animated_sprite.is_playing():
+		_animated_sprite.stop()
+	_animated_sprite.play(animation)
 
 func _die() -> void:
 	queue_free()
@@ -101,6 +109,8 @@ func _on_attack_area_body_entered(body: Node2D) -> void:
 	is_preparing_to_attack = true
 	_prepare_timer.start()
 	velocity = Vector2.ZERO
+	#_play("prepare")
+	_play("attack")
 	state = State.ATTACK
 
 func _on_reachable_area_body_exited(body: Node2D) -> void:
@@ -108,6 +118,7 @@ func _on_reachable_area_body_exited(body: Node2D) -> void:
 	if not player:
 		return
 	state = State.IDLE
+	_play("idle")
 	print("is not chasing")
 
 func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
