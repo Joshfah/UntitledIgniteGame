@@ -18,7 +18,7 @@ position = Vector2(112, 88)
 
 [node name="Player" parent="." instance=ExtResource("2_86c0p")]
 position = Vector2(352, 156)
-wood = 5
+wood = 10
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_wmigs")
@@ -28,3 +28,4 @@ position = Vector2(392, 264)
 
 [node name="Trader" parent="." instance=ExtResource("4_jpkvr")]
 position = Vector2(424, 160)
+axe_pickup_scene = ExtResource("3_86c0p")
