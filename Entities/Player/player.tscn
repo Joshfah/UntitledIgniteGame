@@ -275,6 +275,7 @@ ease = 2
 radius = 3.16228
 
 [node name="Player" type="CharacterBody2D"]
+collision_mask = 4
 script = ExtResource("1_lu8i8")
 
 [node name="Animations" type="Node2D" parent="."]
@@ -325,7 +326,6 @@ gizmo_extents = 0.0
 
 [node name="HitBox" parent="." instance=ExtResource("8_7a1se")]
 position = Vector2(0, 12)
-monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 shape = SubResource("CircleShape2D_lub02")
