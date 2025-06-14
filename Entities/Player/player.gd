@@ -93,6 +93,9 @@ func movement() -> void:
 		can_sprint = true
 		speed = 100
 
+func heal(amount_of_heal: int) -> void:
+	hurtbox.health += amount_of_heal
+
 func set_wood(new_wood: int) -> void:
 	wood = clamp(new_wood, 0, max_wood)
 	# UI...

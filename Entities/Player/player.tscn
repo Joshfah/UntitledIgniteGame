@@ -292,7 +292,7 @@ position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_3uyv8")
 
 [node name="HurtBox" parent="." instance=ExtResource("3_lu8i8")]
-max_health = 6
+max_health = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 position = Vector2(0, 0.5)
