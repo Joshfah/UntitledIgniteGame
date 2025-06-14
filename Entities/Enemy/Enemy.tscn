@@ -187,3 +187,5 @@ one_shot = true
 
 [node name="AttackCooldownTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="PatrolTimer" type="Timer" parent="."]
