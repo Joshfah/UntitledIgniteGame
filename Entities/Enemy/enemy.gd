@@ -107,6 +107,10 @@ func _patrol() -> void:
 		_patrol_timer.start(randf() * max_patrol_delay)
 		_play("idle")
 		state = State.IDLE
+	if _ray_cast.get_collider() is Player:
+		state = State.CHASE
+		_play("run")
+		print("is chasing")
 
 func _start_patrol() -> void:
 	if not state == State.IDLE:
