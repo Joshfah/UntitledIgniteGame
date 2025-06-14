@@ -30,7 +30,7 @@ func _process(_delta: float) -> void:
 	if x != 0 && y == 0:
 		last_vertical_dir = "down"
 	
-	print(last_facing_dir)
+	#print(last_facing_dir)
 	
 	var animation : String
 	if player.velocity != Vector2.ZERO && !hitting:
@@ -49,7 +49,7 @@ func _process(_delta: float) -> void:
 			
 			player.set_physics_process(false)
 			
-			print("hit_" + last_vertical_dir)
+			#print("hit_" + last_vertical_dir)
 			sprite.play("hit_" + last_vertical_dir)
 			
 			await sprite.animation_finished
