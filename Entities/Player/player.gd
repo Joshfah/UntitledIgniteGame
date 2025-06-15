@@ -13,6 +13,7 @@ extends CharacterBody2D
 var can_sprint : bool = true
 var current_frost := 0.0: set = set_current_frost
 
+@onready var _walk_audio := $Node2D/Walk
 @onready var hurtbox = $HurtBox
 @onready var sprite = $AnimatedSprite2D
 @onready var collision = $CollisionShape2D
@@ -56,16 +57,21 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_pressed("SPRINT"):
 		stamina -= stamina_rate * delta
-		speed = 130
+		speed = 100
+		_walk_audio.pitch_scale = 1.5
 	else:
 		stamina += stamina_rate * delta
-		speed = 100
+		speed = 60
+		_walk_audio.pitch_scale = 1
 	
 	stamina = clamp(stamina, 0, max_stamina)
 
 func get_input() -> void:
 	var input_direction = Input.get_vector("A", "D", "W", "S")
 	velocity = input_direction.normalized() * speed
+	
+	if velocity == Vector2.ZERO:
+		_walk_audio.play()
 	
 	if Input.is_action_just_pressed("HIT") && has_axe:
 		
@@ -92,12 +98,12 @@ func get_frost_damage() -> void:
 func movement() -> void:
 	if stamina <= 0:
 		stamina = 1
-		speed = 40
+		speed = 25
 		can_sprint = false
 		# send ui signal for canvas modulate
 		await get_tree().create_timer(5.0).timeout
 		can_sprint = true
-		speed = 100
+		speed = 60
 
 func heal(amount_of_heal: int) -> void:
 	hurtbox.health += amount_of_heal
