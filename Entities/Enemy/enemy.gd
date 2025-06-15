@@ -24,6 +24,7 @@ enum State {
 @export_range(10.0, 50.0, 0.1) var attack_penalty_speed := 10.0
 
 @onready var _hurt_box := $HurtBox
+@onready var _hit_box := $HitBox
 @onready var _nav_agent := $NavigationAgent2D
 @onready var _reachable_area := $ReachableArea
 @onready var _attack_area := $AttackArea
@@ -33,6 +34,10 @@ enum State {
 @onready var _cooldown_timer := $AttackCooldownTimer
 @onready var _patrol_timer := $PatrolTimer
 @onready var _animated_sprite := $AnimatedSprite2D
+# SFX
+@onready var _attack_sfx := $SFX/AttackSFX
+@onready var _die_sfx := $SFX/DieSFX
+@onready var _hit_sfx := $SFX/HitSFX
 
 var state : State = State.IDLE
 var target : Player
@@ -45,6 +50,7 @@ var _distance_reach := 0.0
 func _ready() -> void:
 	# connections
 	_hurt_box.no_health.connect(_die)
+	_hurt_box.get_hurt.connect(_on_hurt_box_get_hurt)
 	_reachable_area.body_exited.connect(_on_reachable_area_body_exited)
 	_attack_area.body_entered.connect(_on_attack_area_body_entered)
 	_nav_agent.velocity_computed.connect(_on_navigation_agent_2d_velocity_computed)
@@ -137,12 +143,24 @@ func _play(animation: String) -> void:
 	_animated_sprite.play(animation)
 
 func _die() -> void:
+	set_physics_process(false)
+	_hurt_box.set_deferred("monitorable", false)
+	_hit_box.set_deferred("monitoring", false)
+	_animated_sprite.hide()
+	_die_sfx.play()
+	await _die_sfx.finished
 	queue_free()
 
 func _recalc_path() -> void:
 	if not state == State.CHASE:
 		return
 	_nav_agent.set_target_position(target.global_position)
+
+func _on_hurt_box_get_hurt() -> void:
+	_hit_sfx.play()
+	_animated_sprite.modulate = Color(1.0, 0.0, 0.0)
+	var tween := create_tween()
+	tween.tween_property(_animated_sprite, "modulate", Color(1.0, 1.0, 1.0), 1.0)
 
 func _on_attack_area_body_entered(body: Node2D) -> void:
 	if not body is Player or is_preparing_to_attack:
@@ -154,6 +172,8 @@ func _on_attack_area_body_entered(body: Node2D) -> void:
 	#_play("prepare")
 	_play("attack")
 	state = State.ATTACK
+	await _prepare_timer.timeout
+	_attack_sfx.play()
 
 func _on_reachable_area_body_exited(body: Node2D) -> void:
 	var player := body as Player

@@ -46,7 +46,7 @@ func _sell_axe() -> void:
 	# Animation
 	var tween := create_tween().set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)
 	tween.tween_property(path_follow, "progress_ratio", 1.0, 2.0)
-	
+	player.wood -= axe_cost
 	axe_sold = true
 	_hover_value.set_value(heal_cost)
 	_product_icon.texture = icon_heart

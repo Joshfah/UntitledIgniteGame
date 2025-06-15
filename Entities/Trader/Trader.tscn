@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://dstjniwkmu7px"]
 
 [ext_resource type="Script" uid="uid://b6up0j8x8d5v0" path="res://Entities/Trader/trader.gd" id="1_d87ea"]
-[ext_resource type="Texture2D" uid="uid://qi1wy1yy84pt" path="res://assets/bear-npc.png" id="1_yiwvw"]
+[ext_resource type="Texture2D" uid="uid://bbag4gpoaj6i5" path="res://assets/bear-npc.png" id="1_yiwvw"]
 [ext_resource type="Texture2D" uid="uid://di06fab7iquo4" path="res://assets/axe.png" id="2_2qqx7"]
 [ext_resource type="PackedScene" uid="uid://cpva7cuacpy2o" path="res://Items/axt_item.tscn" id="2_sxxbl"]
 [ext_resource type="PackedScene" uid="uid://c46v5blghw8rp" path="res://HoverIcon/hover_value.tscn" id="3_hd8eo"]
