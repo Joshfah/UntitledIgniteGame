@@ -33,6 +33,7 @@ func _ready() -> void:
 	_heat_area.body_entered.connect(_on_heat_area_body_entered)
 	_heat_area.body_exited.connect(_on_heat_area_body_exited)
 	set_fuel_left(max_fuel / 2.0)
+	_flame_sprite.play("default")
 
 func _process(delta: float) -> void:
 	# wenn was übrig ist, dann ins fuel_left adden
