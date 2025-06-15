@@ -254,7 +254,7 @@ y_sort_enabled = true
 script = ExtResource("1_q5wpd")
 amount_wood = 300
 time_cycle_duration = 31.0
-mood_color_night = Color(0.079, 0.0839, 0.1, 1)
+mood_color_night = Color(0.1242, 0.14536, 0.23, 1)
 
 [node name="Player" parent="." instance=ExtResource("4_7ckbr")]
 position = Vector2(48, 741)

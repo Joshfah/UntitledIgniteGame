@@ -128,6 +128,9 @@ func _on_get_damage():
 		hurtbox.set_deferred("monitoring", false)
 		hurtboxshape.set_deferred("disabled", true)
 		sprite.set_deferred("visible", false)
+		
+		_axe_sound.stop()
+		_walk_audio.stop()
 
 func player() -> void:
 	pass
