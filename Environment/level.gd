@@ -60,6 +60,7 @@ func _input(event: InputEvent) -> void:
 func _on_player_died() -> void:
 	print("Player died")
 	PlayerAutoload.player.set_physics_process(false)
+	TimeCycleAutoload.cycle_stopped = true
 	if final_day_passed:
 		_animation_player.play("win")
 	else:
@@ -67,8 +68,8 @@ func _on_player_died() -> void:
 
 func _on_final_day_passed() -> void:
 	_trader.queue_free()
-	for child in _items.get_children():
-		child.queue_free()
+	#for child in _items.get_children():
+		#child.queue_free()
 	final_day_passed = true
 
 func _time_cycle_setup() -> void:

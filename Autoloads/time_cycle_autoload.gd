@@ -20,6 +20,8 @@ var current_mood_color := Color(255)
 var time_cycle_duration := 300.0
 var passed_days := 0: set = set_passed_days
 
+var cycle_stopped := false
+
 func start() -> void:
 	await get_tree().process_frame
 	set_passed_days(0)
@@ -52,4 +54,6 @@ func set_passed_days(new_passed_days: int) -> void:
 		final_day_passed.emit()
 
 func add_day() -> void:
+	if cycle_stopped:
+		return
 	set_passed_days(passed_days + 1)
