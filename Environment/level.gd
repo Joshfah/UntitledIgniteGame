@@ -28,10 +28,10 @@ func spawn_wood() -> void:
 	
 	for i in range(amount_wood):
 		var snowTiles : Array[Vector2i] = _snowMap.get_used_cells()
-		var placeTile : Vector2i = Vector2i(randi_range(-181, 212), randi_range(-153, 180)) # musste tilemapgröße manuell eingeben, hat anders nicht funktioniert
+		var placeTile : Vector2i = Vector2i(randi_range(-66, 67), randi_range(-48, 57)) # musste tilemapgröße manuell eingeben, hat anders nicht funktioniert
 		
 		while _obsaclesMap.get_cell_tile_data(placeTile) != null:
-			placeTile = Vector2i(randi_range(snowTiles.front().x, snowTiles.back().x), randi_range(snowTiles.front().y, snowTiles.back().y))
+			placeTile = Vector2i(randi_range(-66, -48), randi_range(67, 57))
 		
 		var global_pos : Vector2 = _snowMap.map_to_local(placeTile)
 		

@@ -13,8 +13,8 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("INTERACT"):
 		queue_free()
-		PlayerAutoload.player.set_wood(PlayerAutoload.player.wood + 1)
-		print(PlayerAutoload.player.wood)
+		player.set_wood(player.wood + 1)
+		print(player.wood)
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.has_method("player"):
