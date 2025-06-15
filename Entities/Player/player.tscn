@@ -321,9 +321,6 @@ tween_resource = SubResource("Resource_7a1se")
 follow_damping = true
 follow_damping_value = Vector2(0.25, 0.25)
 
-[node name="Marker2D" type="Marker2D" parent="."]
-gizmo_extents = 0.0
-
 [node name="HitBox" parent="." instance=ExtResource("8_7a1se")]
 position = Vector2(0, 12)
 collision_mask = 2
