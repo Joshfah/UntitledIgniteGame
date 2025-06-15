@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c46v5blghw8rp" path="res://HoverIcon/hover_value.tscn" id="3_hd8eo"]
 [ext_resource type="Texture2D" uid="uid://b16nown4um33o" path="res://assets/UI/heart-ui.png" id="3_sxxbl"]
 [ext_resource type="Texture2D" uid="uid://dkq2hohehjq5j" path="res://assets/wood4.png" id="4_6dbdq"]
-[ext_resource type="Texture2D" uid="uid://cr6ygfy0u4itb" path="res://assets/bear-npc-sheet.png" id="5_sxxbl"]
+[ext_resource type="Texture2D" uid="uid://4j8s8e4bp21v" path="res://assets/bear-npc-sheet.png" id="5_sxxbl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hdlqv"]
 atlas = ExtResource("2_2qqx7")

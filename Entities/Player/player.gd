@@ -97,12 +97,14 @@ func get_frost_damage() -> void:
 
 func movement() -> void:
 	if stamina <= 0:
+		_walk_audio.pitch_scale = 0.75
 		stamina = 1
 		speed = 25
 		can_sprint = false
 		# send ui signal for canvas modulate
 		await get_tree().create_timer(5.0).timeout
 		can_sprint = true
+		_walk_audio.pitch_scale = 1
 		speed = 60
 
 func heal(amount_of_heal: int) -> void:
