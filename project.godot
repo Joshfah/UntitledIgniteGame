@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Untitled Ignite Game"
-run/main_scene="uid://buoxxxl8qgpxe"
+run/main_scene="uid://d0xslorvs0elu"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 

@@ -1,15 +1,16 @@
-[gd_scene load_steps=14 format=4 uid="uid://buoxxxl8qgpxe"]
+[gd_scene load_steps=15 format=4 uid="uid://buoxxxl8qgpxe"]
 
 [ext_resource type="Script" uid="uid://182tbh3v2osp" path="res://Environment/level.gd" id="1_q5wpd"]
 [ext_resource type="PackedScene" uid="uid://b6nu548wdd4y0" path="res://Environment/TileMap/snow.tscn" id="2_t5trs"]
 [ext_resource type="PackedScene" uid="uid://3xtxabbwfpee" path="res://Environment/TileMap/dirt_path.tscn" id="3_7ckbr"]
 [ext_resource type="PackedScene" uid="uid://ccn3s6q1fwoel" path="res://Entities/Player/player.tscn" id="4_7ckbr"]
 [ext_resource type="PackedScene" uid="uid://bwjffjwpbaqsj" path="res://Environment/TileMap/obstacles.tscn" id="4_ihm8p"]
-[ext_resource type="PackedScene" uid="uid://ckbq5h5ho18og" path="res://Environment/TileMap/trees.tscn" id="6_05x8u"]
+[ext_resource type="PackedScene" path="res://Environment/TileMap/trees.tscn" id="6_05x8u"]
 [ext_resource type="PackedScene" uid="uid://de127p3s5onlo" path="res://Bonfire/bonfire.tscn" id="6_ac3lh"]
 [ext_resource type="PackedScene" uid="uid://q5ijviybwflu" path="res://Entities/Enemy/Enemy.tscn" id="6_baloa"]
+[ext_resource type="PackedScene" uid="uid://bec7smlhtln6j" path="res://Menu/pause_menu.tscn" id="8_05x8u"]
 [ext_resource type="Texture2D" uid="uid://cysavmgundo8q" path="res://assets/plane.png" id="9_8rrtq"]
-[ext_resource type="Script" uid="uid://71e3r4v75oh5" path="res://Environment/audio.gd" id="10_ij88s"]
+[ext_resource type="Script" path="res://Environment/audio.gd" id="10_ij88s"]
 [ext_resource type="AudioStream" uid="uid://c2t3e8tipvhxg" path="res://assets/music/Intro Backgroundmusic (long).mp3" id="11_ojni7"]
 [ext_resource type="AudioStream" uid="uid://d1gg7yg6gbiu8" path="res://assets/music/Backgroundmusic (Loop).mp3" id="12_ojni7"]
 
@@ -31,7 +32,6 @@ position = Vector2(47, 751)
 wood = 10
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color(0.24, 0.24, 0.24, 1)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
@@ -158,5 +158,10 @@ stream = ExtResource("11_ojni7")
 [node name="BackgroundLoop" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("12_ojni7")
 autoplay = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("8_05x8u")]
+visible = false
 
 [connection signal="finished" from="Audio/Intro" to="Audio" method="_on_intro_finished"]

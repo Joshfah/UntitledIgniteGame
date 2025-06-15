@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://v0hqptqg7puh" path="res://Entities/Enemy/enemy.gd" id="1_7s3rp"]
 [ext_resource type="PackedScene" uid="uid://blbbrytgt780p" path="res://Collision/hurt_box.tscn" id="2_bgbm4"]
 [ext_resource type="PackedScene" uid="uid://b5echm1va85eq" path="res://Collision/hit_box.tscn" id="3_3l5gm"]
-[ext_resource type="Texture2D" uid="uid://dp7tcr4x0ysuw" path="res://assets/wolf-sheet.png" id="4_7s3rp"]
+[ext_resource type="Texture2D" uid="uid://cvrbvgn178o2d" path="res://assets/wolf-sheet.png" id="4_7s3rp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_y11p7"]
 radius = 8.0
