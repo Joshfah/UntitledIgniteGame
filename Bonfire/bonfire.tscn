@@ -58,7 +58,9 @@ collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_s8pws")
 ignite_particles_scene = ExtResource("2_1f1rl")
+max_fuel = 700.0
 recharge_rate = 100.0
+fuel_power = 60.0
 heat_power = 12.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

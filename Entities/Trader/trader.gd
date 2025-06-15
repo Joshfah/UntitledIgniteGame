@@ -12,7 +12,9 @@ extends StaticBody2D
 @onready var _drop_path := $DropPath
 @onready var _hover_value := $HoverValue
 @onready var _product_icon := $ProductIcon
+@onready var _ui: UI = UiAutoload.ui
 
+var first_occurance := true
 var axe_sold := false
 var is_player_nearby := false
 
@@ -66,6 +68,9 @@ func _on_area_body_entered(body: Node2D) -> void:
 	is_player_nearby = true
 	_hover_value.show()
 	_product_icon.show()
+	if first_occurance:
+		first_occurance = false
+		_ui.show_text_bear()
 
 func _on_area_body_exited(body: Node2D) -> void:
 	if not body is Player:

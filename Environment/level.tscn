@@ -252,15 +252,14 @@ _data = {
 [node name="Level" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_q5wpd")
-amount_wood = 300
-time_cycle_duration = 31.0
+amount_wood = 100
+time_cycle_duration = 90.0
 mood_color_night = Color(0.1242, 0.14536, 0.23, 1)
 
 [node name="Player" parent="." instance=ExtResource("4_7ckbr")]
 position = Vector2(48, 741)
 stamina = 250.0
 max_stamina = 250.0
-wood = 10
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 visible = false

@@ -57,6 +57,23 @@ func show_text(displayt : String):
 	
 	text.clear()
 
+func show_text_bear() -> void:
+	text.clear()
+	
+	text.add_text("Looks like this bear...")
+	
+	animation.play("show_text")
+	
+	await animation.animation_finished
+	
+	animation.play("show_text")
+	text.clear()
+	text.add_text("...could use some wood")
+	
+	await animation.animation_finished
+	
+	text.clear()
+
 func show_start_text() -> void:
 	text.add_text("Brr, it's so cold")
 	
