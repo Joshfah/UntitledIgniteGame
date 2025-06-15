@@ -1,0 +1,19 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://bmutbbc4ieccc"]
+
+[ext_resource type="Texture2D" uid="uid://uttxoxjq1bew" path="res://assets/flame.png" id="1_y7kyr"]
+[ext_resource type="FontFile" uid="uid://cdgsku7eg80n3" path="res://assets/nokiafc22.ttf" id="2_otkbs"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_v7m4l"]
+thickness = 2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0yx0a"]
+atlas = ExtResource("1_y7kyr")
+region = Rect2(0, 0, 10, 15)
+margin = Rect2(-2.995, -2.085, 3.275, 0)
+
+[resource]
+HSeparator/constants/separation = 27
+HSeparator/styles/separator = SubResource("StyleBoxLine_v7m4l")
+HSlider/icons/grabber = SubResource("AtlasTexture_0yx0a")
+HSlider/icons/grabber_highlight = SubResource("AtlasTexture_0yx0a")
+Label/fonts/font = ExtResource("2_otkbs")

@@ -1,0 +1,172 @@
+[gd_scene load_steps=18 format=3 uid="uid://bec7smlhtln6j"]
+
+[ext_resource type="Script" uid="uid://crh6o5n6jodhv" path="res://Menu/pause_menu.gd" id="1_23cxc"]
+[ext_resource type="Theme" uid="uid://bmutbbc4ieccc" path="res://Menu/menu.tres" id="1_erqna"]
+[ext_resource type="FontFile" uid="uid://cdgsku7eg80n3" path="res://assets/nokiafc22.ttf" id="2_6yc8v"]
+[ext_resource type="Texture2D" uid="uid://bdcybqm14an51" path="res://assets/UI/play-button.png" id="3_ruqhd"]
+[ext_resource type="Texture2D" uid="uid://b3lv0qly1xr4o" path="res://assets/UI/redx-icon.png" id="4_famgy"]
+[ext_resource type="Texture2D" uid="uid://ta0158nrpjk1" path="res://assets/UI/help-icon.png" id="4_mnpem"]
+[ext_resource type="Texture2D" uid="uid://cjmokpk7wga0k" path="res://assets/UI/play-button-pressed.png" id="4_pbgpf"]
+[ext_resource type="Texture2D" uid="uid://bbf8cfrx7xx22" path="res://assets/UI/help-icon-pressed.png" id="5_erqna"]
+[ext_resource type="Texture2D" uid="uid://bpvky6a0rxfe3" path="res://assets/UI/play-button-hover.png" id="5_mnpem"]
+[ext_resource type="Texture2D" uid="uid://bsrqp2asvctu7" path="res://assets/UI/redx-icon-pressed.png" id="5_ny6x8"]
+[ext_resource type="Texture2D" uid="uid://w5hj3xwgfef4" path="res://assets/UI/redx-icon-hover.png" id="6_32q2t"]
+[ext_resource type="Texture2D" uid="uid://33eng5o5qnfq" path="res://assets/UI/options-button.png" id="6_erqna"]
+[ext_resource type="Texture2D" uid="uid://cv8qgdfc6i4kq" path="res://assets/UI/help-icon-hover.png" id="6_tw5gn"]
+[ext_resource type="Texture2D" uid="uid://dkhgaaa1gvg4i" path="res://assets/UI/options-button-pressed.png" id="7_tw5gn"]
+[ext_resource type="Texture2D" uid="uid://bfx6rbgtfuei6" path="res://assets/UI/options-button-hover.png" id="8_yh6c4"]
+[ext_resource type="PackedScene" uid="uid://djum1mwjwcqbq" path="res://Menu/option_menu.tscn" id="9_6yc8v"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_famgy"]
+font = ExtResource("2_6yc8v")
+font_size = 24
+
+[node name="PauseMenu" type="Control"]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_erqna")
+script = ExtResource("1_23cxc")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.286275)
+
+[node name="OptionMenu" parent="." instance=ExtResource("9_6yc8v")]
+visible = false
+layout_mode = 1
+
+[node name="HelpPage" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HelpPage"]
+layout_mode = 0
+offset_left = 228.0
+offset_top = 140.0
+offset_right = 384.0
+offset_bottom = 250.0
+theme_override_constants/separation = 9
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HelpPage/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="HelpPage/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Move"
+
+[node name="Label2" type="Label" parent="HelpPage/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Sprint"
+
+[node name="Label3" type="Label" parent="HelpPage/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Attack"
+
+[node name="Label4" type="Label" parent="HelpPage/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Interact"
+
+[node name="VSeparator" type="VSeparator" parent="HelpPage/HBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HelpPage/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="HelpPage/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "WASD"
+
+[node name="Label2" type="Label" parent="HelpPage/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Shift"
+
+[node name="Label3" type="Label" parent="HelpPage/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Space"
+
+[node name="Label4" type="Label" parent="HelpPage/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "E"
+
+[node name="CancelButton" type="TextureButton" parent="HelpPage"]
+layout_mode = 0
+offset_left = 396.0
+offset_top = 108.0
+offset_right = 420.0
+offset_bottom = 132.0
+texture_normal = ExtResource("4_famgy")
+texture_pressed = ExtResource("5_ny6x8")
+texture_hover = ExtResource("6_32q2t")
+stretch_mode = 5
+
+[node name="PausePage" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="PausePage"]
+layout_mode = 0
+offset_left = 268.0
+offset_top = 84.0
+offset_right = 373.0
+offset_bottom = 114.0
+text = "Paused"
+label_settings = SubResource("LabelSettings_famgy")
+
+[node name="HelpButton" type="TextureButton" parent="PausePage"]
+layout_mode = 0
+offset_left = 428.0
+offset_top = 88.0
+offset_right = 452.0
+offset_bottom = 112.0
+texture_normal = ExtResource("4_mnpem")
+texture_pressed = ExtResource("5_erqna")
+texture_hover = ExtResource("6_tw5gn")
+stretch_mode = 5
+
+[node name="StartPage" type="VBoxContainer" parent="PausePage"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 240.0
+offset_top = 132.0
+offset_right = 300.0
+offset_bottom = 176.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+alignment = 1
+
+[node name="PlayButton" type="TextureButton" parent="PausePage/StartPage"]
+layout_mode = 2
+texture_normal = ExtResource("3_ruqhd")
+texture_pressed = ExtResource("4_pbgpf")
+texture_hover = ExtResource("5_mnpem")
+
+[node name="OptionButton" type="TextureButton" parent="PausePage/StartPage"]
+layout_mode = 2
+texture_normal = ExtResource("6_erqna")
+texture_pressed = ExtResource("7_tw5gn")
+texture_hover = ExtResource("8_yh6c4")
+
+[connection signal="pressed" from="HelpPage/CancelButton" to="." method="_on_cancel_button_pressed"]
+[connection signal="pressed" from="PausePage/HelpButton" to="." method="_on_help_button_pressed"]
+[connection signal="pressed" from="PausePage/StartPage/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="PausePage/StartPage/OptionButton" to="." method="_on_option_button_pressed"]
