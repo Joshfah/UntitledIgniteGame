@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://cpva7cuacpy2o"]
+
+[ext_resource type="PackedScene" uid="uid://cc8vjr013abs2" path="res://Items/wood_item.tscn" id="1_vb4o3"]
+[ext_resource type="Script" uid="uid://cyfo051ax8600" path="res://Items/axt_item.gd" id="2_bp7qq"]
+[ext_resource type="Texture2D" uid="uid://di06fab7iquo4" path="res://assets/axe.png" id="2_ndd2x"]
+
+[node name="AxtItem" instance=ExtResource("1_vb4o3")]
+script = ExtResource("2_bp7qq")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_ndd2x")

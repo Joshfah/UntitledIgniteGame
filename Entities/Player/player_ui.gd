@@ -10,8 +10,13 @@ extends Control
 @onready var _frost_bar := $FrostBar
 @onready var _frost_hud := $FrostHUD
 @onready var _injury_hud := $InjuryHUD
+@onready var text := $Portrait/RichTextLabel
+@onready var animation := $Portrait/AnimationPlayer
+@onready var wood_count := $Sprite2D/Label
 
 var player : Player = PlayerAutoload.player
+
+var first_wood_pickup : bool = true
 
 var max_health : int = 6
 var health := 6: set = set_health
@@ -29,11 +34,50 @@ func _ready() -> void:
 	_tween = create_tween()
 	_reset_tween()
 	heartsprites = hearts.get_children()
+	
+	show_start_text()
+
+func show_text(displayt : String):
+	if animation.current_animation == "RESET" or animation.current_animation == "show_text":
+		await animation.animation_finished
+	
+	if displayt == "I can use this for the fire":
+		if first_wood_pickup:
+			first_wood_pickup = false
+		else:
+			return
+	
+	animation.play("show_text")
+	
+	text.clear()
+	
+	text.add_text(displayt)
+	
+	await animation.animation_finished
+	
+	text.clear()
+
+func show_start_text() -> void:
+	text.add_text("Brr, it's so cold")
+	
+	animation.play("show_text")
+	
+	await animation.animation_finished
+	
+	animation.play("show_text")
+	text.clear()
+	text.add_text("I need to keep this fire alive.")
+	
+	await animation.animation_finished
+	
+	text.clear()
 
 func _process(_delta: float) -> void:
 	_heart_ui_process()
 	_stamina_ui_process()
 	_frost_ui_process()
+	
+	wood_count.text = str(PlayerAutoload.player.wood)
 
 func set_health(new_health: int) -> void:
 	health = new_health
