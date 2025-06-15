@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://u7baiqkagrhx"
+path="res://.godot/imported/Axe hit 01.wav-32c28eea6ec07037aed2e9eb62211bd6.sample"
+
+[deps]
+
+source_file="res://assets/music/sfx/Axe hit 01.wav"
+dest_files=["res://.godot/imported/Axe hit 01.wav-32c28eea6ec07037aed2e9eb62211bd6.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

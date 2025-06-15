@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dtcfv1b07jhst"
+path="res://.godot/imported/Wolf dies 02.mp3-a288e3a22ab65036335461a7da268e5e.mp3str"
+
+[deps]
+
+source_file="res://assets/music/sfx/Wolf dies 02.mp3"
+dest_files=["res://.godot/imported/Wolf dies 02.mp3-a288e3a22ab65036335461a7da268e5e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

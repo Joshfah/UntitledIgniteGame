@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dfiumivvvuxf1"
+path="res://.godot/imported/Wind (loop).mp3-1297331f662fbc9e979fb542fd0b7f85.mp3str"
+
+[deps]
+
+source_file="res://assets/music/sfx/Wind (loop).mp3"
+dest_files=["res://.godot/imported/Wind (loop).mp3-1297331f662fbc9e979fb542fd0b7f85.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
