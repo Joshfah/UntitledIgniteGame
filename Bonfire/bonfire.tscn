@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://de127p3s5onlo"]
+[gd_scene load_steps=20 format=3 uid="uid://de127p3s5onlo"]
 
 [ext_resource type="Script" uid="uid://bmceblubvl5b8" path="res://Bonfire/bonfire.gd" id="1_s8pws"]
 [ext_resource type="PackedScene" uid="uid://bv15x0wjh0ld4" path="res://VFX/Flame/ignite_particles.tscn" id="2_1f1rl"]
@@ -6,10 +6,12 @@
 [ext_resource type="Texture2D" uid="uid://uttxoxjq1bew" path="res://assets/flame.png" id="3_buw6a"]
 [ext_resource type="Texture2D" uid="uid://bey5xbcyskhek" path="res://VFX/Flame/Puff.png" id="3_dsyyl"]
 [ext_resource type="Material" uid="uid://c01h2hxplkl1w" path="res://VFX/Flame/fire_ball_trail.tres" id="4_1f1rl"]
-[ext_resource type="Texture2D" uid="uid://ce1jqoufshttu" path="res://assets/LightSprite.png" id="4_70l5l"]
+[ext_resource type="Texture2D" uid="uid://f3xjujiltuuw" path="res://assets/LightSprite.png" id="4_70l5l"]
 [ext_resource type="Texture2D" uid="uid://knex3secpdbn" path="res://VFX/Flame/Sparkle.png" id="5_3f3cn"]
 [ext_resource type="Material" uid="uid://bdptvqbl8ls8w" path="res://VFX/Flame/fire_sparkles.tres" id="6_or7rd"]
 [ext_resource type="AudioStream" uid="uid://weo387i1opli" path="res://assets/music/sfx/Fire (loop).mp3" id="10_3f3cn"]
+[ext_resource type="PackedScene" uid="uid://bj231fwlkibf5" path="res://HoverIcon/hover_icon.tscn" id="11_urmvw"]
+[ext_resource type="Texture2D" uid="uid://jqy2vaf6kfsj" path="res://assets/wood3.png" id="12_muk61"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_70l5l"]
 radius = 4.0
@@ -108,3 +110,7 @@ stream = ExtResource("10_3f3cn")
 autoplay = true
 max_distance = 100.0
 bus = &"SFX"
+
+[node name="HoverIcon" parent="." instance=ExtResource("11_urmvw")]
+position = Vector2(0, -20)
+texture = ExtResource("12_muk61")

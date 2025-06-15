@@ -21,6 +21,7 @@ signal flame_died
 @onready var _heat_collision_shape := $HeatArea/CollisionShape2D
 @onready var _flame_particles := $FlameParticles
 @onready var _light := $PointLight2D
+@onready var _hover_icon := $HoverIcon
 
 ## die Lebenskraft - wenn 0, dann erlischt es
 var fuel_left : float: set = set_fuel_left
@@ -48,12 +49,15 @@ func _process(delta: float) -> void:
 	if is_player_nearby:
 		PlayerAutoload.player.current_frost -= heat_power * delta
 
-# TEST
 func _input(event: InputEvent) -> void:
 	var player := PlayerAutoload.player
-	if event.is_action_pressed("INTERACT") and is_player_nearby and player.wood > 0:
-		player.set_wood(player.wood - 1)
-		add_fuel(fuel_power)
+	if event.is_action_pressed("INTERACT") and is_player_nearby:
+		if player.wood > 0:
+			player.set_wood(player.wood - 1)
+			add_fuel(fuel_power)
+		else:
+			_hover_icon.animate_failing()
+	
 
 func set_fuel_left(new_fuel: float) -> void:
 	fuel_left = clamp(new_fuel, 0.0, max_fuel)
@@ -92,10 +96,12 @@ func _on_heat_area_body_entered(_body: Node2D) -> void:
 	if not _body is Player:
 		return
 	is_player_nearby = true
+	_hover_icon.show()
 	print("Player entered")
 
 func _on_heat_area_body_exited(_body: Node2D) -> void:
 	if not _body is Player:
 		return
 	is_player_nearby = false
+	_hover_icon.hide()
 	print("Player exited")
