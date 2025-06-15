@@ -1,0 +1,83 @@
+[gd_scene load_steps=10 format=3 uid="uid://dyp8qj6njrohb"]
+
+[ext_resource type="Theme" uid="uid://bmutbbc4ieccc" path="res://Menu/menu.tres" id="1_w3xka"]
+[ext_resource type="Script" uid="uid://dny13cfnbx8w7" path="res://Menu/lose_screen.gd" id="2_kspw6"]
+[ext_resource type="Texture2D" uid="uid://bdcybqm14an51" path="res://assets/UI/play-button.png" id="3_a5xwl"]
+[ext_resource type="Texture2D" uid="uid://cjmokpk7wga0k" path="res://assets/UI/play-button-pressed.png" id="4_yoy7r"]
+[ext_resource type="Texture2D" uid="uid://bpvky6a0rxfe3" path="res://assets/UI/play-button-hover.png" id="5_v72y7"]
+[ext_resource type="Texture2D" uid="uid://b3lv0qly1xr4o" path="res://assets/UI/redx-icon.png" id="6_kqrve"]
+[ext_resource type="Texture2D" uid="uid://bsrqp2asvctu7" path="res://assets/UI/redx-icon-pressed.png" id="7_13neg"]
+[ext_resource type="Texture2D" uid="uid://w5hj3xwgfef4" path="res://assets/UI/redx-icon-hover.png" id="8_brexw"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_b3rx5"]
+font_size = 8
+
+[node name="LoseScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_w3xka")
+script = ExtResource("2_kspw6")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.32549)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "You Died"
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="PlayButton" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("3_a5xwl")
+texture_pressed = ExtResource("4_yoy7r")
+texture_hover = ExtResource("5_v72y7")
+stretch_mode = 5
+
+[node name="ExitButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 308.0
+offset_top = 280.0
+offset_right = 328.0
+offset_bottom = 300.0
+texture_normal = ExtResource("6_kqrve")
+texture_pressed = ExtResource("7_13neg")
+texture_hover = ExtResource("8_brexw")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="ExitButton"]
+layout_mode = 0
+offset_left = -20.0
+offset_top = -12.0
+offset_right = 42.0
+offset_bottom = 8.0
+text = "No Thanks :("
+label_settings = SubResource("LabelSettings_b3rx5")
+
+[connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]

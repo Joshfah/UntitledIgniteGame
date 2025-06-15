@@ -14,6 +14,7 @@ func _ready() -> void:
 func _on_music_slider_value_changed(value: float) -> void:
 	var db = linear_to_db(value)
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), db)
+	print(db)
 
 
 func _on_soundeffects_slider_value_changed(value: float) -> void:

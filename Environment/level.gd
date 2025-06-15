@@ -17,8 +17,17 @@ extends Node2D
 @onready var _snowMap := $NavigationRegion2D/TileMaps/Snow
 @onready var _obsaclesMap := $NavigationRegion2D/TileMaps/Obstacles
 @onready var _canvas := $CanvasModulate
+@onready var _animation_player := $AnimationPlayer
+@onready var _trader := $NavigationRegion2D/Trader
+
+var final_day_passed := false
 
 func _ready() -> void:
+	PlayerAutoload.player.hurtbox.no_health.connect(_on_player_died)
+	TimeCycleAutoload.final_day_passed.connect(_on_final_day_passed)
+	TimeCycleAutoload.start()
+	_animation_player.play("white")
+	_canvas.show()
 	spawn_wood()
 	_time_cycle_setup()
 
@@ -48,6 +57,20 @@ func _input(event: InputEvent) -> void:
 		get_tree().paused = true
 		_pause_menu.show()
 
+func _on_player_died() -> void:
+	print("Player died")
+	PlayerAutoload.player.set_physics_process(false)
+	if final_day_passed:
+		_animation_player.play("win")
+	else:
+		_animation_player.play("lose")
+
+func _on_final_day_passed() -> void:
+	_trader.queue_free()
+	for child in _items.get_children():
+		child.queue_free()
+	final_day_passed = true
+
 func _time_cycle_setup() -> void:
 	var cycle := TimeCycleAutoload
 	cycle.coldness_at_day = coldness_at_day
@@ -57,3 +80,6 @@ func _time_cycle_setup() -> void:
 	cycle.mood_color_evening = mood_color_evening
 	cycle.mood_color_night = mood_color_night
 	cycle.time_cycle_duration = time_cycle_duration
+
+func _win() -> void:
+	get_tree().change_scene_to_file("res://Menu/main_menu.tscn")
