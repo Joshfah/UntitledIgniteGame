@@ -386,11 +386,14 @@ texture = ExtResource("9_8rrtq")
 script = ExtResource("10_ij88s")
 
 [node name="Intro" type="AudioStreamPlayer2D" parent="Audio"]
+process_mode = 3
 stream = ExtResource("11_ojni7")
+bus = &"Music"
 
 [node name="BackgroundLoop" type="AudioStreamPlayer2D" parent="Audio"]
+process_mode = 3
 stream = ExtResource("12_ojni7")
-autoplay = true
+bus = &"Music"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
