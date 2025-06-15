@@ -139,7 +139,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"hit_down",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -156,7 +156,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"hit_up",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -283,9 +283,9 @@ script = ExtResource("2_tekja")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ppdlg")
-animation = &"hit_up"
+animation = &"hit_down"
 frame = 3
-frame_progress = 0.431295
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4)
@@ -320,9 +320,6 @@ zoom = Vector2(2, 2)
 tween_resource = SubResource("Resource_7a1se")
 follow_damping = true
 follow_damping_value = Vector2(0.25, 0.25)
-
-[node name="Marker2D" type="Marker2D" parent="."]
-gizmo_extents = 0.0
 
 [node name="HitBox" parent="." instance=ExtResource("8_7a1se")]
 position = Vector2(0, 12)

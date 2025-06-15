@@ -1,0 +1,73 @@
+[gd_scene load_steps=6 format=3 uid="uid://djum1mwjwcqbq"]
+
+[ext_resource type="Theme" uid="uid://bmutbbc4ieccc" path="res://Menu/menu.tres" id="1_6vu8u"]
+[ext_resource type="Script" uid="uid://bpj0nxgtvvxdj" path="res://Menu/option_menu.gd" id="3_6vu8u"]
+[ext_resource type="Texture2D" uid="uid://b3lv0qly1xr4o" path="res://assets/UI/redx-icon.png" id="4_0yx0a"]
+[ext_resource type="Texture2D" uid="uid://bsrqp2asvctu7" path="res://assets/UI/redx-icon-pressed.png" id="5_4k87v"]
+[ext_resource type="Texture2D" uid="uid://w5hj3xwgfef4" path="res://assets/UI/redx-icon-hover.png" id="6_wc38v"]
+
+[node name="OptionMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_6vu8u")
+script = ExtResource("3_6vu8u")
+
+[node name="CancleButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 392.0
+offset_top = 100.0
+offset_right = 416.0
+offset_bottom = 124.0
+texture_normal = ExtResource("4_0yx0a")
+texture_pressed = ExtResource("5_4k87v")
+texture_hover = ExtResource("6_wc38v")
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Musik"
+
+[node name="MusicSlider" type="HSlider" parent="VBoxContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Soundeffects"
+
+[node name="SoundeffectsSlider" type="HSlider" parent="VBoxContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[connection signal="pressed" from="CancleButton" to="." method="_on_cancle_button_pressed"]
+[connection signal="value_changed" from="VBoxContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/SoundeffectsSlider" to="." method="_on_soundeffects_slider_value_changed"]
