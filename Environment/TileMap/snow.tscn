@@ -20,7 +20,7 @@ texture = ExtResource("1_1y3ms")
 3:3/0/z_index = -2
 3:3/0/terrain_set = 0
 3:3/0/terrain = 0
-3:3/0/probability = 1.5
+3:3/0/probability = 5.0
 
 [sub_resource type="TileSet" id="TileSet_bvo77"]
 terrain_set_0/mode = 0
