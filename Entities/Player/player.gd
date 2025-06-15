@@ -21,6 +21,8 @@ var current_frost := 0.0: set = set_current_frost
 @onready var _frost_damage_timer := $FrostDamageTimer
 @onready var hitbox := $HitBox
 @onready var hitboxshape = $HitBox/CollisionShape2D
+@onready var _axe_sound := $Node2D/AxeHit
+
 
 func _ready() -> void:
 	
@@ -65,7 +67,9 @@ func get_input() -> void:
 	var input_direction = Input.get_vector("A", "D", "W", "S")
 	velocity = input_direction.normalized() * speed
 	
-	if Input.is_action_just_pressed("HIT"):
+	if Input.is_action_just_pressed("HIT") && has_axe:
+		
+		play_sound()
 		
 		hitbox.set_deferred("monitorable", true)
 		hitboxshape.set_deferred("disabled", false)
@@ -75,6 +79,8 @@ func get_input() -> void:
 		hitbox.set_deferred("monitorable", false)
 		hitboxshape.set_deferred("disabled", true)
 
+func play_sound():
+	_axe_sound.play()
 
 ## Wenn immernoch der Frostbalken voll ist, dann Schaden nehmen und Timer neu starten
 func get_frost_damage() -> void:

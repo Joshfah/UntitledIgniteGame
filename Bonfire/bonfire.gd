@@ -16,7 +16,6 @@ signal flame_died
 @export_range(8.0, 32.0, 0.1) var min_radius := 16.0
 @export_range(64.0, 128.0, 0.1) var max_radius := 80.0
 
-
 @onready var _flame_sprite := $Flame
 @onready var _heat_area := $HeatArea
 @onready var _heat_collision_shape := $HeatArea/CollisionShape2D
