@@ -1,12 +1,12 @@
-[gd_scene load_steps=14 format=3 uid="uid://dstjniwkmu7px"]
+[gd_scene load_steps=18 format=3 uid="uid://dstjniwkmu7px"]
 
 [ext_resource type="Script" uid="uid://b6up0j8x8d5v0" path="res://Entities/Trader/trader.gd" id="1_d87ea"]
-[ext_resource type="Texture2D" uid="uid://bbag4gpoaj6i5" path="res://assets/bear-npc.png" id="1_yiwvw"]
 [ext_resource type="Texture2D" uid="uid://di06fab7iquo4" path="res://assets/axe.png" id="2_2qqx7"]
 [ext_resource type="PackedScene" uid="uid://cpva7cuacpy2o" path="res://Items/axt_item.tscn" id="2_sxxbl"]
 [ext_resource type="PackedScene" uid="uid://c46v5blghw8rp" path="res://HoverIcon/hover_value.tscn" id="3_hd8eo"]
 [ext_resource type="Texture2D" uid="uid://b16nown4um33o" path="res://assets/UI/heart-ui.png" id="3_sxxbl"]
 [ext_resource type="Texture2D" uid="uid://dkq2hohehjq5j" path="res://assets/wood4.png" id="4_6dbdq"]
+[ext_resource type="Texture2D" uid="uid://cr6ygfy0u4itb" path="res://assets/bear-npc-sheet.png" id="5_sxxbl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hdlqv"]
 atlas = ExtResource("2_2qqx7")
@@ -15,15 +15,40 @@ atlas = ExtResource("2_2qqx7")
 atlas = ExtResource("3_sxxbl")
 region = Rect2(0, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ul33o"]
+atlas = ExtResource("5_sxxbl")
+region = Rect2(0, 0, 32, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5270t"]
+atlas = ExtResource("5_sxxbl")
+region = Rect2(0, 29, 32, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mrmmq"]
+atlas = ExtResource("5_sxxbl")
+region = Rect2(32, 0, 32, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h7xv7"]
+atlas = ExtResource("5_sxxbl")
+region = Rect2(32, 29, 32, 29)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_ahjw4"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_yiwvw")
+"texture": SubResource("AtlasTexture_ul33o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5270t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mrmmq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h7xv7")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 6.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d87ea"]
@@ -46,6 +71,7 @@ icon_heart = SubResource("AtlasTexture_vk5dt")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ahjw4")
+frame_progress = 0.879477
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)
