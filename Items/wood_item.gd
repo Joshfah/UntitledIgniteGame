@@ -20,7 +20,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.has_method("player"):
 		hover_sprite.show()
 		
-		ui.show_text("I can pick up this wood")
+		ui.show_text("I can use this for the fire")
 		
 		set_process(true)
 

@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://da7027dllk7u6" path="res://assets/portraits.png" id="6_emjl3"]
 [ext_resource type="Texture2D" uid="uid://jqy2vaf6kfsj" path="res://assets/wood3.png" id="7_hb5qb"]
 [ext_resource type="FontFile" uid="uid://cdgsku7eg80n3" path="res://assets/nokiafc22.ttf" id="8_dpke0"]
-[ext_resource type="FontFile" uid="uid://ckm8ivlc5eqr" path="res://assets/UI/ByteBounce.ttf" id="9_toslg"]
+[ext_resource type="FontFile" uid="uid://btum44wli8wvm" path="res://assets/UI/ByteBounce.ttf" id="9_toslg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ediu0"]
 resource_local_to_scene = true
@@ -74,6 +74,21 @@ shader_parameter/animation_speed = 0.5
 [sub_resource type="Theme" id="Theme_toslg"]
 default_font = ExtResource("8_dpke0")
 
+[sub_resource type="Animation" id="Animation_x7kj7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RichTextLabel:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
 [sub_resource type="Animation" id="Animation_toslg"]
 resource_name = "show_text"
 length = 3.5
@@ -88,21 +103,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 1.0]
-}
-
-[sub_resource type="Animation" id="Animation_x7kj7"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("RichTextLabel:visible_ratio")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_x7kj7"]
