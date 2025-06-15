@@ -12,12 +12,18 @@ extends Node2D
 @export var mood_color_night : Color = Color(0.182, 0.193, 0.23)
 
 @onready var _canvas := $CanvasModulate
+@onready var _pause_menu := $CanvasLayer/PauseMenu
 
 func _ready() -> void:
 	_time_cycle_setup()
 
 func _process(_delta: float) -> void:
 	_canvas.color = TimeCycleAutoload.current_mood_color
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_cancel"):
+		get_tree().paused = true
+		_pause_menu.show()
 
 func _time_cycle_setup() -> void:
 	var cycle := TimeCycleAutoload

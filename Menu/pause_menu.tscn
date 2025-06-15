@@ -1,0 +1,72 @@
+[gd_scene load_steps=10 format=3 uid="uid://bec7smlhtln6j"]
+
+[ext_resource type="Script" uid="uid://crh6o5n6jodhv" path="res://Menu/pause_menu.gd" id="1_23cxc"]
+[ext_resource type="FontFile" uid="uid://cdgsku7eg80n3" path="res://assets/nokiafc22.ttf" id="2_6yc8v"]
+[ext_resource type="Texture2D" uid="uid://bdcybqm14an51" path="res://assets/UI/play-button.png" id="3_ruqhd"]
+[ext_resource type="Texture2D" uid="uid://cjmokpk7wga0k" path="res://assets/UI/play-button-pressed.png" id="4_pbgpf"]
+[ext_resource type="Texture2D" uid="uid://bpvky6a0rxfe3" path="res://assets/UI/play-button-hover.png" id="5_mnpem"]
+[ext_resource type="Texture2D" uid="uid://33eng5o5qnfq" path="res://assets/UI/options-button.png" id="6_erqna"]
+[ext_resource type="Texture2D" uid="uid://dkhgaaa1gvg4i" path="res://assets/UI/options-button-pressed.png" id="7_tw5gn"]
+[ext_resource type="Texture2D" uid="uid://bfx6rbgtfuei6" path="res://assets/UI/options-button-hover.png" id="8_yh6c4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_famgy"]
+font = ExtResource("2_6yc8v")
+font_size = 24
+
+[node name="PauseMenu" type="Control"]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_23cxc")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.286275)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 268.0
+offset_top = 84.0
+offset_right = 373.0
+offset_bottom = 114.0
+text = "Paused"
+label_settings = SubResource("LabelSettings_famgy")
+
+[node name="StartPage" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = -38.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+alignment = 1
+
+[node name="PlayButton" type="TextureButton" parent="StartPage"]
+layout_mode = 2
+texture_normal = ExtResource("3_ruqhd")
+texture_pressed = ExtResource("4_pbgpf")
+texture_hover = ExtResource("5_mnpem")
+
+[node name="OptionButton" type="TextureButton" parent="StartPage"]
+layout_mode = 2
+texture_normal = ExtResource("6_erqna")
+texture_pressed = ExtResource("7_tw5gn")
+texture_hover = ExtResource("8_yh6c4")
+
+[connection signal="pressed" from="StartPage/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="StartPage/OptionButton" to="." method="_on_option_button_pressed"]
