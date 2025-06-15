@@ -25,13 +25,12 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	_canvas.color = TimeCycleAutoload.current_mood_color
 
-
 func spawn_wood() -> void:
 	
 	for i in range(amount_wood):
 		var placeTile : Vector2i = Vector2i(randi_range(-66, 67), randi_range(-48, 57)) # musste tilemapgröße manuell eingeben, hat anders nicht funktioniert
 		
-		while _obsaclesMap.get_cell_tile_data(placeTile) != null:
+		while _obsaclesMap.get_cell_tile_data(placeTile) != null or placeTile.x <= 7 && placeTile.x >= 5 && placeTile.y <= 47 && placeTile.y >= 46:
 			placeTile = Vector2i(randi_range(-66, -48), randi_range(67, 57))
 		
 		var global_pos : Vector2 = _snowMap.map_to_local(placeTile)

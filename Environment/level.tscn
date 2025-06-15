@@ -28,7 +28,7 @@ time_cycle_duration = 31.0
 mood_color_night = Color(0.079, 0.0839, 0.1, 1)
 
 [node name="Player" parent="." instance=ExtResource("4_7ckbr")]
-position = Vector2(47, 751)
+position = Vector2(48, 741)
 wood = 10
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
@@ -146,7 +146,7 @@ position = Vector2(420, 862)
 [node name="Items" type="Node2D" parent="."]
 
 [node name="Plane" type="Sprite2D" parent="."]
-position = Vector2(160, 800)
+position = Vector2(100, 790)
 texture = ExtResource("9_8rrtq")
 
 [node name="Audio" type="Node2D" parent="."]

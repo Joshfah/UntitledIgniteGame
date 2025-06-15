@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://dstjniwkmu7px"]
+[gd_scene load_steps=14 format=3 uid="uid://dstjniwkmu7px"]
 
 [ext_resource type="Script" uid="uid://b6up0j8x8d5v0" path="res://Entities/Trader/trader.gd" id="1_d87ea"]
 [ext_resource type="Texture2D" uid="uid://bbag4gpoaj6i5" path="res://assets/bear-npc.png" id="1_yiwvw"]
 [ext_resource type="Texture2D" uid="uid://di06fab7iquo4" path="res://assets/axe.png" id="2_2qqx7"]
+[ext_resource type="PackedScene" uid="uid://cpva7cuacpy2o" path="res://Items/axt_item.tscn" id="2_sxxbl"]
 [ext_resource type="PackedScene" uid="uid://c46v5blghw8rp" path="res://HoverIcon/hover_value.tscn" id="3_hd8eo"]
 [ext_resource type="Texture2D" uid="uid://b16nown4um33o" path="res://assets/UI/heart-ui.png" id="3_sxxbl"]
 [ext_resource type="Texture2D" uid="uid://dkq2hohehjq5j" path="res://assets/wood4.png" id="4_6dbdq"]
@@ -39,6 +40,7 @@ point_count = 8
 
 [node name="Trader" type="StaticBody2D"]
 script = ExtResource("1_d87ea")
+axe_pickup_scene = ExtResource("2_sxxbl")
 icon_axe = SubResource("AtlasTexture_hdlqv")
 icon_heart = SubResource("AtlasTexture_vk5dt")
 
