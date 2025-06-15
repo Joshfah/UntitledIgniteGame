@@ -1,6 +1,8 @@
 class_name Bonfire
 extends StaticBody2D
 
+signal flame_died
+
 ## die Scale-Größe der Flamme, wenn fuel_left auf Maximum ist
 @export_range(0.5, 4.0, 0.1) var initial_flame_scale := 2.0
 @export var ignite_particles_scene : PackedScene
@@ -58,14 +60,17 @@ func set_fuel_left(new_fuel: float) -> void:
 	fuel_left = clamp(new_fuel, 0.0, max_fuel)
 	# Größe der Flamme
 	var current_scale := fuel_left * initial_flame_scale / max_fuel
-	set_particle_scale(current_scale)
-	#_flame_sprite.scale = Vector2(current_scale, current_scale)
+	#set_particle_scale(current_scale)
+	_flame_sprite.scale = Vector2(current_scale, current_scale)
 	# Größe der Hitze
 	var current_heat_factor := fuel_left / max_fuel
 	var true_heat_size : float = clamp(current_heat_factor * max_radius, min_radius, max_radius)
 	var circle_shape := _heat_collision_shape.shape as CircleShape2D
 	circle_shape.radius = true_heat_size
 	_light.texture_scale = lerp(0.0, 0.25, current_heat_factor)
+	if fuel_left <= 0.0:
+		set_process(false)
+		flame_died.emit()
 
 func set_particle_scale(new_scale: float) -> void:
 	var counter := 0
