@@ -55,6 +55,9 @@ func _physics_process(delta: float) -> void:
 	if !can_sprint:
 		return
 	
+	if Input.is_action_just_pressed("SPRINT"):
+		stamina -= 10
+	
 	if Input.is_action_pressed("SPRINT"):
 		stamina -= stamina_rate * delta
 		speed = 100
