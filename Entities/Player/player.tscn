@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=4 uid="uid://ccn3s6q1fwoel"]
+[gd_scene load_steps=50 format=4 uid="uid://ccn3s6q1fwoel"]
 
 [ext_resource type="Script" uid="uid://c5wntec1txq7j" path="res://Entities/Player/player.gd" id="1_lu8i8"]
 [ext_resource type="Texture2D" uid="uid://cqujr5utquhh1" path="res://assets/player-spritesheet-2.png" id="2_lu8i8"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="6_01a4e"]
 [ext_resource type="PackedScene" uid="uid://b5echm1va85eq" path="res://Collision/hit_box.tscn" id="8_7a1se"]
 [ext_resource type="PackedScene" uid="uid://b2ysslnn5d877" path="res://Entities/Player/player_ui.tscn" id="9_lub02"]
+[ext_resource type="AudioStream" uid="uid://bumi5620aew6v" path="res://assets/music/sfx/walking (slow).mp3" id="10_ap3xn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ppdlg"]
 atlas = ExtResource("2_lu8i8")
@@ -315,6 +316,7 @@ stream_4/stream = SubResource("AudioStreamWAV_owvpp")
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 4
 script = ExtResource("1_lu8i8")
+speed = 60
 
 [node name="Animations" type="Node2D" parent="."]
 script = ExtResource("2_tekja")
@@ -375,4 +377,8 @@ disabled = true
 
 [node name="AxeHit" type="AudioStreamPlayer2D" parent="Node2D"]
 stream = SubResource("AudioStreamRandomizer_xr8lj")
+bus = &"SFX"
+
+[node name="Walk" type="AudioStreamPlayer2D" parent="Node2D"]
+stream = ExtResource("10_ap3xn")
 bus = &"SFX"
